@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>PC Master Pro — профессиональный ремонт компьютеров</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Exo+2:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<style>
+:root {
+    --primary: #2563eb;
+    --secondary: #1e40af;
+    --accent: #3b82f6;
+    --success: #10b981;
+    --dark: #0f172a;
+    --darker: #020617;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --card-bg: rgba(255, 255, 255, 0.03);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--light);
+    background: var(--darker);
+    overflow-x: hidden;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Parallax эффекты */
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: 
+        linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.95)),
+        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1920&auto=format&fit=crop') center/cover;
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.layer-1 {
+    background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1920&auto=format&fit=crop') center/cover;
+    opacity: 0.1;
+}
+
+/* Логотип и заголовок */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.7));
+}
+
+.logo-container {
+    margin-bottom: 50px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.logo {
+    font-size: 4.5rem;
+    color: transparent;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.logo-sub {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+}
+
+.typing-container {
+    height: 80px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.typing-text {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.8rem;
+    color: var(--light);
+    text-align: center;
+    border-right: 3px solid var(--accent);
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent); }
+}
+
+@keyframes typingDone {
+    from { border-right: 3px solid var(--accent); }
+    to { border-right: 3px solid transparent; }
+}
+
+header p {
+    max-width: 800px;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 50px;
+}
+
+/* График работы */
+.work-schedule {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 25px 40px;
+    margin-top: 30px;
+    border-left: 4px solid var(--accent);
+}
+
+.work-schedule h3 {
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+/* Кнопка CTA */
+.cta-button {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 22px 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* Основной контент */
+.main-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+section {
+    padding: 120px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 70px;
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+/* Карточки услуг */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.service-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+}
+
+.service-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: var(--accent);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--light);
+}
+
+.service-card p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* Раздел "Почему нам доверяют" */
+.trust-section {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 30px;
+    padding: 80px 60px;
+    margin: 100px 0;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 40px;
+}
+
+.trust-item {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.trust-number {
+    background: var(--gradient);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.trust-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--light);
+}
+
+.trust-content p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* Мастер Андрей */
+.master-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(30, 64, 175, 0.05));
+    border-radius: 30px;
+    padding: 80px 60px;
+    margin: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.master-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--gradient);
+}
+
+.master-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto 40px;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4.5rem;
+    color: white;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.master-name {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, var(--primary), #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.master-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+}
+
+.stat-number {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.master-bio {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--gray);
+}
+
+/* Форма записи */
+.booking-form {
+    max-width: 800px;
+    margin: 80px auto 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 25px;
+    padding: 60px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: var(--light);
+    font-size: 1.1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 18px 25px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--light);
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.form-control[readonly] {
+    background: rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+}
+
+/* Календарь */
+.flatpickr-calendar {
+    background: var(--dark) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.flatpickr-day.selected {
+    background: var(--gradient) !important;
+    border-color: var(--primary) !important;
+}
+
+.flatpickr-day.today {
+    border-color: var(--accent) !important;
+}
+
+/* Временные слоты */
+.time-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.time-slot {
+    padding: 18px 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.time-slot:hover:not(.booked):not(.selected) {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: var(--accent);
+}
+
+.time-slot.selected {
+    background: var(--gradient) !important;
+    border-color: transparent !important;
+    color: white;
+    transform: scale(1.05);
+}
+
+.time-slot.booked {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+}
+
+/* Уведомление о записи */
+.booking-notification {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: var(--gradient);
+    color: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    transform: translateX(400px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+}
+
+.booking-notification.show {
+    transform: translateX(0);
+}
+
+.notification-icon {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+/* Админ-панель */
+.admin-panel-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: var(--gradient);
+    color: white;
+    padding: 18px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    font-size: 1rem;
+}
+
+.admin-panel-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+}
+
+.admin-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--dark);
+    border-radius: 25px;
+    z-index: 1000;
+    width: 95%;
+    max-width: 1600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 2px solid var(--primary);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-title {
+    font-size: 2.5rem;
+    color: var(--light);
+    margin: 0;
+}
+
+.admin-close {
+    background: rgba(239, 68, 68, 0.2);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.admin-close:hover {
+    background: rgba(239, 68, 68, 0.4);
+    transform: rotate(90deg);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.admin-table th {
+    background: var(--gradient);
+    padding: 22px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.admin-table td {
+    padding: 20px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+}
+
+.admin-table tr:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.status-badge {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-new {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.status-active {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--primary);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: flex-end;
+}
+
+/* Социальные иконки */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 60px 0;
+}
+
+.social-link {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--gradient);
+    transform: translateY(-5px);
+    color: white;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(2, 6, 23, 0.8);
+    margin-top: 100px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.copyright {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+/* Анимации */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Заглушка при наличии активной записи */
+.active-booking-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 6, 23, 0.95);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-booking-content {
+    background: var(--dark);
+    padding: 60px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 600px;
+    border: 2px solid var(--primary);
+}
+
+.active-booking-content h2 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.active-booking-details {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+.booking-action {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.action-btn {
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+/* Адаптивность */
+@media (max-width: 1920px) {
+    .main-content {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-panel {
+        width: 95%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-form {
+        padding: 40px 25px;
+    }
+    
+    .admin-panel {
+        padding: 20px;
+    }
+    
+    .time-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .work-schedule {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+<!-- Parallax background -->
+<div class="parallax-bg"></div>
+<div class="parallax-layer layer-1"></div>
+
+<!-- Уведомление о записи -->
+<div id="bookingNotification" class="booking-notification">
+    <div class="notification-icon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <div>
+        <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Запись подтверждена!</h3>
+        <p style="margin: 0; opacity: 0.9; font-size: 0.95rem;">Спасибо за доверие. Мы скоро свяжемся с вами.</p>
+    </div>
+</div>
+
+<!-- Заглушка при активной записи -->
+<div id="activeBookingOverlay" class="active-booking-overlay">
+    <div class="active-booking-content">
+        <h2>У вас уже есть активная запись</h2>
+        <p>Вы не можете создать новую запись, пока у вас есть активная.</p>
+        
+        <div class="active-booking-details" id="currentBookingDetails">
+            <!-- Информация о текущей записи будет здесь -->
+        </div>
+        
+        <div class="booking-action">
+            <button class="action-btn btn-secondary" onclick="hideActiveBookingOverlay()">Понятно</button>
+            <button class="action-btn btn-primary" onclick="cancelCurrentBooking()">Отменить запись</button>
+        </div>
+    </div>
+</div>
+
+<!-- Кнопка админ-панели -->
+<button class="admin-panel-btn" onclick="showAdminLogin()">
+    <i class="fas fa-tools"></i> Админ-панель
+</button>
+
+<header>
+    <div class="logo-container">
+        <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+        </div>
+        <div class="logo-sub">PC MASTER PRO</div>
+    </div>
+    
+    <h1>Компьютерный мастер</h1>
+    
+    <div class="typing-container">
+        <div id="typingText" class="typing-text">Профессиональный ремонт и обслуживание ПК</div>
+    </div>
+    
+    <p>Экспресс-диагностика, качественный ремонт, настройка любой сложности. Работаем с выездом и удалённо. Гарантия на все виды работ.</p>
+    
+    <!-- График работы -->
+    <div class="work-schedule">
+        <h3><i class="fas fa-clock"></i> График работы:</h3>
+        <div class="schedule-grid">
+            <div class="schedule-item">
+                <span>Понедельник - Пятница:</span>
+                <span>12:00 - 23:00</span>
+            </div>
+            <div class="schedule-item">
+                <span>Суббота - Воскресенье:</span>
+                <span>13:00 - 22:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <button class="cta-button" onclick="scrollToBooking()">
+        <i class="fas fa-calendar-check"></i> Записаться на ремонт
+    </button>
+</header>
+
+<main class="main-content">
+    <section id="services">
+        <h2 class="section-title">Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h3>Ремонт компьютеров</h3>
+                <p>Полная диагностика и ремонт системных блоков, замена компонентов, чистка от пыли, апгрейд.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>Ремонт ноутбуков</h3>
+                <p>Замена матриц, клавиатур, ремонт материнских плат, восстановление данных с жёстких дисков.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Удаление вирусов</h3>
+                <p>Очистка системы от вредоносного ПО, настройка защиты, восстановление повреждённых файлов.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>Настройка интернета</h3>
+                <p>Настройка роутеров, устранение проблем с подключением, усиление сигнала Wi-Fi.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Ускорение работы</h3>
+                <p>Оптимизация Windows, очистка системы, настройка для максимальной производительности.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <h3>Установка ПО</h3>
+                <p>Лицензионное программное обеспечение, драйверы, специализированные программы.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="trust-section">
+        <h2 class="section-title">Почему нам доверяют</h2>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-number">1</div>
+                <div class="trust-content">
+                    <h3>Профессиональная диагностика</h3>
+                    <p>Используем современное оборудование для точного определения проблемы</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">2</div>
+                <div class="trust-content">
+                    <h3>Качественные комплектующие</h3>
+                    <p>Работаем с проверенными поставщиками, гарантия на все запчасти</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">3</div>
+                <div class="trust-content">
+                    <h3>Экспресс-ремонт за 60 минут</h3>
+                    <p>Большинство работ выполняем при вас в течение часа</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">4</div>
+                <div class="trust-content">
+                    <h3>Прозрачные цены</h3>
+                    <p>Фиксированная стоимость, известная до начала работ</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">5</div>
+                <div class="trust-content">
+                    <h3>Выезд мастера в течение дня</h3>
+                    <p>Приезжаем в удобное для вас время по предварительной записи</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">6</div>
+                <div class="trust-content">
+                    <h3>Международные сертификаты</h3>
+                    <p>Постоянное повышение квалификации, подтверждённые знания</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">7</div>
+                <div class="trust-content">
+                    <h3>Гарантия до 1 года</h3>
+                    <p>Длительная гарантия на все виды ремонтных работ</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">8</div>
+                <div class="trust-content">
+                    <h3>Бесплатное резервное копирование</h3>
+                    <p>Сохраняем ваши данные перед началом работ</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">9</div>
+                <div class="trust-content">
+                    <h3>Экологичная утилизация</h3>
+                    <p>Старые детали утилизируем согласно экологическим стандартам</p>
+                </div>
+            </div>
+            
+            <div class="trust-item">
+                <div class="trust-number">10</div>
+                <div class="trust-content">
+                    <h3>Полная конфиденциальность</h3>
+                    <p>Ваши данные и информация защищены соглашением о неразглашении</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="master-section">
+        <div class="master-avatar">
+            <i class="fas fa-user-tie"></i>
+        </div>
+        
+        <h2 class="master-name">Мастер Андрей</h2>
+        
+        <div class="master-stats">
+            <div class="stat-item">
+                <span class="stat-number">3 года</span> стажа
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500+</span> выполненных заказов
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span> довольных клиентов
+            </div>
+        </div>
+        
+        <p class="master-bio">
+            Профессиональный мастер с многолетним опытом в сфере ремонта и обслуживания компьютерной техники. 
+            Специализируюсь на сложных случаях — от восстановления данных после физических повреждений до 
+            тонкой настройки профессионального ПО. Каждый клиент для меня — это возможность помочь и сделать 
+            мир технологий более доступным и понятным.
+        </p>
+    </section>
+    
+    <section id="booking">
+        <h2 class="section-title">Запись на ремонт</h2>
+        
+        <div class="booking-form">
+            <form id="bookingForm" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label class="form-label" for="clientName">
+                        <i class="fas fa-user"></i> Ваше имя
+                    </label>
+                    <input class="form-control" id="clientName" required placeholder="Иван Иванов">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="clientPhone">
+                        <i class="fas fa-phone"></i> Телефон
+                    </label>
+                    <input class="form-control" id="clientPhone" required type="tel" placeholder="+7 (999) 123-45-67">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="clientAddress">
+                        <i class="fas fa-map-marker-alt"></i> Адрес (для выезда)
+                    </label>
+                    <input class="form-control" id="clientAddress" required placeholder="г. Москва, ул. Примерная, д. 1">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="clientProblem">
+                        <i class="fas fa-tools"></i> Описание проблемы
+                    </label>
+                    <textarea class="form-control" id="clientProblem" required rows="4" placeholder="Опишите подробно, что случилось с вашим устройством..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="bookingDate">
+                        <i class="fas fa-calendar-alt"></i> Выберите дату
+                    </label>
+                    <input class="form-control" id="bookingDate" type="text" readonly required placeholder="Нажмите для выбора даты">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-clock"></i> Выберите удобное время
+                    </label>
+                    <div class="time-slots-grid" id="timeSlots">
+                        <!-- Временные слоты будут сгенерированы JavaScript -->
+                    </div>
+                    <input type="hidden" id="selectedTime" required>
+                </div>
+                
+                <div class="form-group" style="margin-top: 40px;">
+                    <button type="submit" class="cta-button" style="width: 100%; padding: 22px;">
+                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <div class="social-links">
+        <a href="https://t.me/Official_partner_of_Skoda" class="social-link" target="_blank" title="Telegram">
+            <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://wa.me/79774770587" class="social-link" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://vk.com/molodoi_na_vaz" class="social-link" target="_blank" title="ВКонтакте">
+            <i class="fab fa-vk"></i>
+        </a>
+        <a href="mailto:motoclub323@gmail.com" class="social-link" target="_blank" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#services" class="footer-link">Услуги</a>
+            <a href="#booking" class="footer-link">Запись</a>
+            <a href="#" class="footer-link">Гарантия</a>
+            <a href="#" class="footer-link">Контакты</a>
+            <a href="#" class="footer-link">Отзывы</a>
+        </div>
+        
+        <div class="copyright">
+            © 2024 PC Master Pro. Все права защищены.<br>
+            Профессиональный ремонт компьютеров и ноутбуков<br>
+            График работы: Пн-Пт 12:00-23:00, Сб-Вс 13:00-22:00
+        </div>
+    </div>
+</footer>
+
+<!-- Админ-панель -->
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+        <h2 class="admin-title">Панель администратора</h2>
+        <button class="admin-close" onclick="hideAdminPanel()">×</button>
+    </div>
+    
+    <div id="adminLogin">
+        <div style="max-width: 400px; margin: 50px auto;">
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--light);">Вход в панель управления</h3>
+            <div class="booking-form" style="max-width: 100%; margin: 0;">
+                <div class="form-group">
+                    <label class="form-label">Логин</label>
+                    <input class="form-control" id="adminUser" placeholder="Введите логин" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Пароль</label>
+                    <input class="form-control" id="adminPass" type="password" placeholder="Введите пароль" required>
+                </div>
+                
+                <button class="cta-button" onclick="adminLogin()" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="adminContent" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div>
+                <h3 style="color: var(--light); margin-bottom: 10px;">Все заявки</h3>
+                <p style="color: var(--gray);">Всего: <span id="totalOrders">0</span> | Активных: <span id="activeOrders">0</span></p>
+            </div>
+            
+            <div style="display: flex; gap: 15px;">
+                <button class="action-btn btn-secondary" onclick="refreshOrders()">
+                    <i class="fas fa-sync-alt"></i> Обновить
+                </button>
+                <button class="action-btn btn-primary" onclick="exportToExcel()">
+                    <i class="fas fa-file-excel"></i> Экспорт
+                </button>
+            </div>
+        </div>
+        
+        <div style="overflow-x: auto;">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                        <th>Проблема</th>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersList">
+                    <!-- Записи будут загружены здесь -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="admin-actions">
+            <button class="action-btn btn-secondary" onclick="clearOldOrders()">
+                <i class="fas fa-trash"></i> Удалить старые
+            </button>
+            <button class="action-btn" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;" onclick="clearAllOrders()">
+                <i class="fas fa-trash-alt"></i> Очистить все
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+
+<script>
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация календаря
+    initDatePicker();
+    
+    // Проверка активной записи
+    checkActiveBooking();
+    
+    // Инициализация временных слотов
+    updateTimeSlots();
+    
+    // Завершение анимации печатающегося текста
+    setTimeout(() => {
+        const typingText = document.getElementById('typingText');
+        typingText.style.animation = 'typingDone 0.75s step-end forwards';
+    }, 3500);
+    
+    // Инициализация параллакса
+    initParallax();
+    
+    // Загружаем занятые слоты
+    loadBookedSlots();
+});
+
+// Инициализация Flatpickr
+function initDatePicker() {
+    const today = new Date();
+    const minDate = new Date(today);
+    const maxDate = new Date(today);
+    maxDate.setDate(maxDate.getDate() + 30);
+    
+    flatpickr("#bookingDate", {
+        locale: "ru",
+        dateFormat: "d.m.Y",
+        minDate: today,
+        maxDate: maxDate,
+        defaultDate: today,
+        inline: false,
+        static: false,
+        disableMobile: true,
+        onChange: function(selectedDates, dateStr) {
+            updateTimeSlots();
+        }
+    });
+}
+
+// Проверка активной записи
+function checkActiveBooking() {
+    const activeBooking = getActiveBooking();
+    if (activeBooking) {
+        showActiveBookingOverlay(activeBooking);
+    }
+}
+
+function getActiveBooking() {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    const now = new Date();
+    
+    return bookings.find(booking => {
+        const bookingDate = parseDate(booking.date);
+        const bookingTime = parseInt(booking.time.split(':')[0]);
+        const bookingDateTime = new Date(bookingDate);
+        bookingDateTime.setHours(bookingTime);
+        
+        return bookingDateTime > now && booking.status === 'active';
+    });
+}
+
+function parseDate(dateStr) {
+    const parts = dateStr.split('.');
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+
+function showActiveBookingOverlay(booking) {
+    const overlay = document.getElementById('activeBookingOverlay');
+    const details = document.getElementById('currentBookingDetails');
+    
+    details.innerHTML = `
+        <div style="margin-bottom: 10px;">
+            <strong>Имя:</strong> ${booking.name}
+        </div>
+        <div style="margin-bottom: 10px;">
+            <strong>Телефон:</strong> ${booking.phone}
+        </div>
+        <div style="margin-bottom: 10px;">
+            <strong>Дата:</strong> ${booking.date}
+        </div>
+        <div style="margin-bottom: 10px;">
+            <strong>Время:</strong> ${booking.time}
+        </div>
+        <div>
+            <strong>Проблема:</strong> ${booking.problem}
+        </div>
+    `;
+    
+    overlay.style.display = 'flex';
+}
+
+function hideActiveBookingOverlay() {
+    document.getElementById('activeBookingOverlay').style.display = 'none';
+}
+
+function cancelCurrentBooking() {
+    const activeBooking = getActiveBooking();
+    if (activeBooking) {
+        const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+        const updatedBookings = bookings.map(booking => {
+            if (booking.id === activeBooking.id) {
+                return { ...booking, status: 'cancelled' };
+            }
+            return booking;
+        });
+        
+        localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+        
+        const slotId = `${activeBooking.date}_${activeBooking.time}`;
+        delete bookedSlots[slotId];
+        localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
+        
+        hideActiveBookingOverlay();
+        updateTimeSlots();
+        showNotification('Запись успешно отменена');
+    }
+}
+
+// Обновление временных слотов
+let bookedSlots = {};
+
+function loadBookedSlots() {
+    bookedSlots = JSON.parse(localStorage.getItem('bookedSlots') || '{}');
+}
+
+function updateTimeSlots() {
+    const dateInput = document.getElementById('bookingDate');
+    const timeSlotsContainer = document.getElementById('timeSlots');
+    
+    if (!dateInput.value) return;
+    
+    const selectedDate = dateInput.value;
+    const date = parseDate(selectedDate);
+    const day = date.getDay();
+    
+    // Определяем рабочие часы по графику
+    let startHour, endHour;
+    if (day >= 1 && day <= 5) { // Пн-Пт
+        startHour = 12;
+        endHour = 23;
+    } else { // Сб-Вс
+        startHour = 13;
+        endHour = 22;
+    }
+    
+    // Если сегодня, начинаем с текущего часа + 2
+    const today = new Date();
+    const currentHour = today.getHours();
+    const isToday = selectedDate === formatDate(today);
+    
+    if (isToday) {
+        startHour = Math.max(startHour, currentHour + 2);
+    }
+    
+    timeSlotsContainer.innerHTML = '';
+    
+    for (let hour = startHour; hour < endHour; hour += 2) {
+        const slotValue = `${hour}:00`;
+        const slotId = `${selectedDate}_${slotValue}`;
+        const isBooked = bookedSlots[slotId];
+        
+        const slot = document.createElement('div');
+        slot.className = `time-slot ${isBooked ? 'booked' : ''}`;
+        slot.textContent = `${hour}:00 - ${hour + 2}:00`;
+        slot.dataset.time = slotValue;
+        
+        if (!isBooked) {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                document.getElementById('selectedTime').value = this.dataset.time;
+            });
+        }
+        
+        timeSlotsContainer.appendChild(slot);
+    }
+    
+    if (timeSlotsContainer.children.length === 0) {
+        timeSlotsContainer.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);">
+                <i class="fas fa-calendar-times" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+                <h4>На выбранную дату нет свободных слотов</h4>
+                <p>Пожалуйста, выберите другую дату</p>
+            </div>
+        `;
+    }
+}
+
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+}
+
+// Отправка формы
+async function submitBooking(event) {
+    event.preventDefault();
+    
+    // Проверяем активную запись
+    if (getActiveBooking()) {
+        showActiveBookingOverlay(getActiveBooking());
+        return false;
+    }
+    
+    const name = document.getElementById('clientName').value.trim();
+    const phone = document.getElementById('clientPhone').value.trim();
+    const address = document.getElementById('clientAddress').value.trim();
+    const problem = document.getElementById('clientProblem').value.trim();
+    const date = document.getElementById('bookingDate').value;
+    const time = document.getElementById('selectedTime').value;
+    
+    if (!time) {
+        alert('Пожалуйста, выберите время');
+        return false;
+    }
+    
+    const slotId = `${date}_${time}`;
+    if (bookedSlots[slotId]) {
+        alert('Это время уже занято. Пожалуйста, выберите другое время.');
+        updateTimeSlots();
+        return false;
+    }
+    
+    const booking = {
+        id: Date.now(),
+        name: name,
+        phone: phone,
+        address: address,
+        problem: problem,
+        date: date,
+        time: time,
+        status: 'active',
+        timestamp: new Date().toISOString(),
+        clientId: generateClientId(phone)
+    };
+    
+    let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    bookings.push(booking);
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+    
+    bookedSlots[slotId] = true;
+    localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
+    
+    await sendEmailNotification(booking);
+    
+    showBookingNotification();
+    
+    document.getElementById('bookingForm').reset();
+    document.getElementById('bookingDate').value = formatDate(new Date());
+    updateTimeSlots();
+    
+    document.getElementById('bookingForm').style.opacity = '0.5';
+    document.getElementById('bookingForm').style.pointerEvents = 'none';
+    
+    setTimeout(() => {
+        document.getElementById('bookingForm').style.opacity = '1';
+        document.getElementById('bookingForm').style.pointerEvents = 'auto';
+    }, 10000);
+    
+    return false;
+}
+
+function generateClientId(phone) {
+    return 'client_' + phone.replace(/\D/g, '');
+}
+
+// Отправка email через Formspree
+async function sendEmailNotification(booking) {
+    const emailData = {
+        to: 'motoclub323@gmail.com',
+        subject: `Новая заявка на ремонт #${booking.id}`,
+        html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <div style="background: linear-gradient(135deg, #2563eb, #1e40af); padding: 30px; color: white; text-align: center;">
+                    <h1 style="margin: 0;">Новая заявка на ремонт</h1>
+                </div>
+                <div style="padding: 30px; background: #f5f5f5;">
+                    <div style="background: white; padding: 30px; border-radius: 10px;">
+                        <h2 style="color: #333;">Детали заявки</h2>
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>ID:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.id}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Имя:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.name}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Телефон:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.phone}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Адрес:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.address}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Дата:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.date}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Время:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #eee;">${booking.time}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px;"><strong>Статус:</strong></td>
+                                <td style="padding: 10px;"><span style="background: #10b981; color: white; padding: 5px 15px; border-radius: 20px;">Активная</span></td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                            <strong style="color: #333;">Описание проблемы:</strong>
+                            <p style="margin-top: 10px; color: #555;">${booking.problem}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    };
+    
+    try {
+        await fetch('https://formspree.io/f/mpwnonww', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                _subject: emailData.subject,
+                _replyto: booking.phone,
+                message: emailData.html,
+                name: booking.name,
+                phone: booking.phone,
+                date: booking.date,
+                time: booking.time
+            })
+        });
+    } catch (error) {
+        console.error('Ошибка отправки email:', error);
+    }
+}
+
+// Уведомления
+function showBookingNotification() {
+    const notification = document.getElementById('bookingNotification');
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 5000);
+}
+
+function showNotification(message) {
+    alert(message);
+}
+
+// Админ-панель
+function showAdminLogin() {
+    document.getElementById('adminPanel').style.display = 'block';
+}
+
+function hideAdminPanel() {
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('adminLogin').style.display = 'block';
+    document.getElementById('adminContent').style.display = 'none';
+    document.getElementById('adminUser').value = '';
+    document.getElementById('adminPass').value = '';
+}
+
+function adminLogin() {
+    const user = document.getElementById('adminUser').value;
+    const pass = document.getElementById('adminPass').value;
+    
+    if (user === 'martin_mefik' && pass === 'Ser_J_99k') {
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminContent').style.display = 'block';
+        refreshOrders();
+    } else {
+        alert('Неверный логин или пароль!');
+    }
+}
+
+function refreshOrders() {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    const list = document.getElementById('ordersList');
+    const now = new Date();
+    
+    const activeBookings = bookings.filter(b => b.status === 'active' && parseDate(b.date) >= now);
+    document.getElementById('totalOrders').textContent = bookings.length;
+    document.getElementById('activeOrders').textContent = activeBookings.length;
+    
+    list.innerHTML = '';
+    
+    if (bookings.length === 0) {
+        list.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align: center; padding: 50px; color: var(--gray);">
+                    <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h4>Нет заявок</h4>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    bookings.sort((a, b) => b.id - a.id);
+    
+    bookings.forEach(booking => {
+        const bookingDate = parseDate(booking.date);
+        const isActive = booking.status === 'active' && bookingDate >= now;
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><code>#${booking.id}</code></td>
+            <td>${booking.name}</td>
+            <td><a href="tel:${booking.phone}" style="color: var(--accent);">${booking.phone}</a></td>
+            <td>${booking.address}</td>
+            <td style="max-width: 300px;">${booking.problem}</td>
+            <td>${booking.date}</td>
+            <td>${booking.time}</td>
+            <td>
+                <span class="status-badge ${isActive ? 'status-active' : 'status-new'}">
+                    ${isActive ? 'Активная' : 'Завершена'}
+                </span>
+            </td>
+            <td>
+                <button onclick="changeStatus(${booking.id})" style="background: var(--gradient); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                    ${isActive ? 'Завершить' : 'Активировать'}
+                </button>
+            </td>
+        `;
+        list.appendChild(row);
+    });
+}
+
+function changeStatus(bookingId) {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    const updatedBookings = bookings.map(booking => {
+        if (booking.id === bookingId) {
+            return {
+                ...booking,
+                status: booking.status === 'active' ? 'completed' : 'active'
+            };
+        }
+        return booking;
+    });
+    
+    localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+    refreshOrders();
+    alert('Статус изменён');
+}
+
+function clearOldOrders() {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    const now = new Date();
+    const oneMonthAgo = new Date(now.setMonth(now.getMonth() - 1));
+    
+    const filteredBookings = bookings.filter(booking => {
+        const bookingDate = parseDate(booking.date);
+        return bookingDate >= oneMonthAgo || booking.status === 'active';
+    });
+    
+    localStorage.setItem('bookings', JSON.stringify(filteredBookings));
+    refreshOrders();
+    alert('Старые записи удалены');
+}
+
+function clearAllOrders() {
+    if (confirm('Вы уверены, что хотите удалить ВСЕ записи? Это действие нельзя отменить.')) {
+        localStorage.removeItem('bookings');
+        localStorage.removeItem('bookedSlots');
+        bookedSlots = {};
+        refreshOrders();
+        updateTimeSlots();
+        alert('Все записи удалены');
+    }
+}
+
+function exportToExcel() {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    
+    if (bookings.length === 0) {
+        alert('Нет данных для экспорта');
+        return;
+    }
+    
+    let csv = 'ID;Имя;Телефон;Адрес;Проблема;Дата;Время;Статус;Дата создания\n';
+    
+    bookings.forEach(booking => {
+        csv += `${booking.id};"${booking.name}";${booking.phone};"${booking.address}";"${booking.problem}";${booking.date};${booking.time};${booking.status};${booking.timestamp}\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `заявки_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    alert('Данные экспортированы в CSV');
+}
+
+// Параллакс эффект
+function initParallax() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const layer1 = document.querySelector('.layer-1');
+        
+        if (layer1) {
+            layer1.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    });
+}
+
+// Вспомогательные функции
+function scrollToBooking() {
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Закрытие админ-панели по клику вне её
+document.addEventListener('click', function(e) {
+    const adminPanel = document.getElementById('adminPanel');
+    const adminBtn = document.querySelector('.admin-panel-btn');
+    
+    if (adminPanel.style.display === 'block' && 
+        !adminPanel.contains(e.target) && 
+        e.target !== adminBtn) {
+        hideAdminPanel();
+    }
+});
+</script>
+</body>
+</html>
