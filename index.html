@@ -157,6 +157,9 @@
             border-radius: 4px;
             transition: all 0.3s;
             z-index: 1001;
+            position: absolute;
+            right: 20px;
+            top: 18px;
         }
 
         .nav-toggle:hover {
@@ -919,11 +922,20 @@
             cursor: pointer;
         }
 
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 15px;
+        .time-input {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--input-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--light);
+        }
+
+        .time-input:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.2);
         }
 
         .time-slot {
@@ -1125,6 +1137,31 @@
             color: var(--light);
             margin: 5px 0;
             font-size: 0.9rem;
+        }
+
+        /* Ссылки в футере */
+        .contact-link {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .contact-link:hover {
+            color: var(--secondary);
+            border-bottom: 1px solid var(--secondary);
+        }
+
+        .telegram-link {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .telegram-link:hover {
+            color: #0088cc;
+            border-bottom: 1px solid #0088cc;
         }
 
         /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
@@ -1394,17 +1431,6 @@
                 font-size: 1.1rem;
             }
             
-            .time-slots {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            
-            .time-slot {
-                padding: 12px 5px;
-                font-size: 0.9rem;
-                min-height: 40px;
-            }
-            
             .btn-main {
                 padding: 12px 25px;
                 font-size: 1rem;
@@ -1484,10 +1510,6 @@
                 font-size: 1.4rem;
             }
             
-            .time-slots {
-                grid-template-columns: 1fr;
-            }
-            
             .btn-main {
                 padding: 10px 20px;
                 font-size: 0.95rem;
@@ -1534,6 +1556,8 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1.3rem;
+                top: 13px;
+                right: 15px;
             }
         }
 
@@ -1718,13 +1742,13 @@
                         </div>
                         <div class="work-hours-item-compact">
                             <i class="fas fa-car" aria-hidden="true"></i>
-                            <h4>Выезд</h4>
-                            <p>до 1 часа</p>
+                            <h4>Выезд до вас</h4>
+                            <p>в течении 1-го часа</p>
                         </div>
                         <div class="work-hours-item-compact">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                            <h4>Зона</h4>
-                            <p>Только Москва</p>
+                            <h4>Территория покрытия работ</h4>
+                            <p>г.Москва, МО (по предварительной договорённости)</p>
                         </div>
                     </div>
                     
@@ -1733,14 +1757,14 @@
                     </p>
                     
                     <p class="warning-text">
-                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Для создания заявки из МО звоните по телефону или чат Telegram
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Для создания заявки из МО обращайтесь по телефону или чат Telegram
                     </p>
                     
                     <div class="guarantee-note">
                         <p><strong>Гарантия на работу:</strong></p>
                         <p>На небольшую работу - до 14 дней</p>
                         <p>На серьезную работу - 30 дней</p>
-                        <p>Бесплатная консультация после ремонта</p>
+                        <p>Бесплатная консультация в течении гарантийного срока</p>
                     </div>
                 </div>
             </div>
@@ -1932,31 +1956,43 @@
 
         <!-- Форма заявки -->
         <section id="request" class="fade-in">
-            <h2 class="section-title">Оставить заявку на ремонт</h2>
+            <h2 class="section-title">Оставить заявку на диагностику</h2>
             <div class="form-container">
                 <div class="work-hours" style="margin-top: 0; padding: 10px;">
-                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Выберите удобную дату</h3>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Выберите удобную дату и время</h3>
                 </div>
                 
-                <!-- Выбор даты -->
+                <!-- Выбор даты и времени -->
                 <div class="datetime-selection">
-                    <div class="date-selection" style="grid-column: 1 / -1;">
+                    <div class="date-selection">
                         <h3>Выберите дату *</h3>
                         <input type="text" id="datePicker" class="flatpickr-input" placeholder="Выберите дату" readonly required>
+                    </div>
+                    <div class="time-selection">
+                        <h3>Желаемое время записи *</h3>
+                        <input type="text" id="timeInput" class="time-input" placeholder="Например: 14:30" required>
+                        <p style="color: var(--gray); font-size: 0.85rem; margin-top: 10px;">
+                            Часы работы: Пн-Пт 12:00-23:00, Сб-Вс 13:00-22:00
+                        </p>
                     </div>
                 </div>
                 
                 <form id="simpleRequestForm">
                     <div class="form-group">
-                        <label for="clientName" class="required">Ваше имя</label>
+                        <label for="clientName" class="required">Фамилия и Имя *</label>
                         <input type="text" id="clientName" class="form-control" required placeholder="Иванов Иван">
                     </div>
                     <div class="form-group">
-                        <label for="clientPhone" class="required">Номер телефона</label>
+                        <label for="clientPhone" class="required">Номер телефона *</label>
                         <input type="tel" id="clientPhone" class="form-control" required placeholder="+7 (999) 123-45-67">
                     </div>
                     <div class="form-group">
-                        <label for="clientAddress" class="required">Адрес в Москве</label>
+                        <label for="telegram" class="required">Ваш Telegram ник *</label>
+                        <input type="text" id="telegram" class="form-control" required placeholder="@username" pattern="^@[A-Za-z0-9_]{5,32}$">
+                        <p style="color: var(--gray); font-size: 0.85rem; margin-top: 5px;">Введите начиная с @ (например: @username)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientAddress" class="required">Адрес в Москве *</label>
                         <input type="text" id="clientAddress" class="form-control" required placeholder="Улица, дом, квартира">
                         <div class="checkbox-group">
                             <input type="checkbox" id="remoteService">
@@ -1964,7 +2000,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="deviceType" class="required">Тип устройства</label>
+                        <label for="deviceType" class="required">Тип устройства *</label>
                         <select id="deviceType" class="form-control" required>
                             <option value="">Выберите тип устройства</option>
                             <option value="Ноутбук">Ноутбук</option>
@@ -1973,7 +2009,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="problemDescription" class="required">Описание проблемы</label>
+                        <label for="problemDescription" class="required">Описание проблемы *</label>
                         <textarea id="problemDescription" class="form-control" rows="4" required placeholder="Что случилось с устройством? Опишите симптомы проблемы..."></textarea>
                         <div class="word-count">Осталось символов: <span id="charCount">500</span></div>
                     </div>
@@ -1989,8 +2025,12 @@
                     <h3>Контакты</h3>
                     <ul class="contact-info">
                         <li><i class="fas fa-phone" aria-hidden="true"></i> +7 (977) 477-05-87</li>
-                        <li><i class="fas fa-envelope" aria-hidden="true"></i> mskrepairpc@gmail.com</li>
-                        <li><i class="fab fa-telegram" aria-hidden="true"></i> Telegram: @Official_partner_of_Skoda</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> 
+                            <a href="mailto:mskrepairpc@gmail.com" class="contact-link">mskrepairpc@gmail.com</a>
+                        </li>
+                        <li><i class="fab fa-telegram" aria-hidden="true"></i> 
+                            <a href="https://t.me/Official_partner_of_Skoda" target="_blank" class="telegram-link">@Official_partner_of_Skoda</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1998,8 +2038,8 @@
                     <ul class="contact-info">
                         <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> Пн-Пт: 12:00 - 23:00</li>
                         <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> Сб-Вс: 13:00 - 22:00</li>
-                        <li><i class="fas fa-clock" aria-hidden="true"></i> Выезд до 1 часа</li>
-                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Только г. Москва</li>
+                        <li><i class="fas fa-clock" aria-hidden="true"></i> Выезд в течении 1-го часа</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Территория проведения работ: г.Москва МО (по договоренности)</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -2030,6 +2070,7 @@
             <!-- Важное сообщение -->
             <div class="beta-warning">
                 <h4><i class="fas fa-exclamation-triangle"></i> Важная информация!</h4>
+                <p><strong>ОБЯЗАТЕЛЬНО СДЕЛАЙТЕ СКРИНШОТ ЭТОЙ ЗАПИСИ!!</strong></p>
                 <p>В ближайшее рабочее время с вами свяжется мастер для уточнения деталей проблемы.</p>
                 <p>Если в течение 2-х рабочих часов с вами не связались, пожалуйста, напишите самостоятельно в Telegram: <strong>@Official_partner_of_Skoda</strong></p>
             </div>
@@ -2045,6 +2086,21 @@
             <h2 id="priceModalTitle"><i class="fas fa-tags"></i> Прайс-лист на услуги</h2>
             
             <div class="prices-container">
+                <div style="background: linear-gradient(135deg, rgba(255, 184, 0, 0.2), rgba(255, 184, 0, 0.1));
+                        border-left: 4px solid #ffb800;
+                        padding: 15px;
+                        margin-bottom: 25px;
+                        border-radius: 8px;
+                        text-align: center;
+                        border: 1px solid rgba(255, 184, 0, 0.3);">
+                    <h4 style="color: #ffb800; margin-bottom: 8px; font-size: 1.1rem; font-weight: bold;">
+                        <i class="fas fa-exclamation-triangle"></i> ВАЖНАЯ ИНФОРМАЦИЯ
+                    </h4>
+                    <p style="color: #ffb800; margin: 5px 0; font-size: 0.95rem; font-weight: bold;">
+                        Цена указана за работу, стоимость детали уточняется по факту востребованности и марки производителя.
+                    </p>
+                </div>
+                
                 <div class="price-category">
                     <h3>Основные услуги</h3>
                     <div class="price-item">
@@ -2057,7 +2113,7 @@
                     </div>
                     <div class="price-item">
                         <span>Комплексная диагностика (при ремонте)</span>
-                        <span>250 ₽</span>
+                        <span>600 ₽</span>
                     </div>
                 </div>
                 
@@ -2066,6 +2122,10 @@
                     <div class="price-item">
                         <span>Установка Windows 10/11</span>
                         <span>1200 ₽</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Активация лицензии Windows</span>
+                        <span>500 ₽</span>
                     </div>
                     <div class="price-item">
                         <span>Настройка Windows после установки</span>
@@ -2104,12 +2164,12 @@
                         <span>1200 ₽</span>
                     </div>
                     <div class="price-item">
-                        <span>Замена разъема питания</span>
-                        <span>от 1500 ₽</span>
+                        <span>Замена модуля WiFi</span>
+                        <span>1200 ₽</span>
                     </div>
                     <div class="price-item">
-                        <span>Ремонт материнской платы (диагностика)</span>
-                        <span>от 1000 ₽</span>
+                        <span>Замена модуля Bluetooth</span>
+                        <span>1000 ₽</span>
                     </div>
                 </div>
                 
@@ -2142,30 +2202,18 @@
                 </div>
                 
                 <div class="price-category">
-                    <h3>Восстановление данных</h3>
-                    <div class="price-item">
-                        <span>Восстановление с HDD/SSD (логические ошибки)</span>
-                        <span>от 1500 ₽</span>
-                    </div>
-                    <div class="price-item">
-                        <span>Восстановление с флешки</span>
-                        <span>от 1200 ₽</span>
-                    </div>
-                    <div class="price-item">
-                        <span>Резервное копирование данных</span>
-                        <span>от 800 ₽</span>
-                    </div>
-                </div>
-                
-                <div class="price-category">
                     <h3>Сетевое оборудование</h3>
                     <div class="price-item">
                         <span>Настройка Wi-Fi роутера</span>
                         <span>800 ₽</span>
                     </div>
                     <div class="price-item">
-                        <span>Прокладка сетевого кабеля (за метр)</span>
+                        <span>Прокладка сетевого кабеля FTTB (за метр)</span>
                         <span>100 ₽</span>
+                    </div>
+                    <div class="price-item">
+                        <span>Прокладка кабеля GPON (за метр)</span>
+                        <span>200 ₽</span>
                     </div>
                     <div class="price-item">
                         <span>Обжим коннекторов RJ-45</span>
@@ -2198,7 +2246,11 @@
                     </p>
                     <ul style="color: var(--light); padding-left: 20px; margin-bottom: 15px;">
                         <li>Оставьте заявку через форму на сайте</li>
-                        <li>Напишите в Telegram: <strong>@Official_partner_of_Skoda</strong></li>
+                        <li>Напишите в Telegram: 
+                            <a href="https://t.me/Official_partner_of_Skoda" target="_blank" class="telegram-link" style="color: var(--secondary);">
+                                <strong>@Official_partner_of_Skoda</strong>
+                            </a>
+                        </li>
                         <li>Позвоните по телефону: <strong>+7 (977) 477-05-87</strong></li>
                     </ul>
                     <p class="warning-text" style="margin-bottom: 0;">
@@ -2214,7 +2266,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
 <script>
-    // Конфигурация Telegram бота (ЗАМЕНИТЕ НА СВОИ ДАННЫЕ!)
+    // Конфигурация Telegram бота
     let TELEGRAM_BOT_TOKEN = '8400236799:AAGX1M-rA4dbjvSsVxzxpt59vOtM_LpABV8';
     let TELEGRAM_CHAT_ID = '1070056420';
     
@@ -2413,17 +2465,52 @@
                 return;
             }
             
+            // Проверка времени
+            const timeInput = document.getElementById('timeInput').value.trim();
+            if (!timeInput) {
+                alert('Пожалуйста, укажите желаемое время записи');
+                return;
+            }
+            
+            // Валидация времени
+            if (!validateTime(timeInput)) {
+                alert('Пожалуйста, введите корректное время в формате ЧЧ:ММ (например: 14:30)');
+                return;
+            }
+            
+            // Проверка времени в зависимости от дня недели
+            if (!validateTimeByDay(selectedDate, timeInput)) {
+                alert('Выбранное время не соответствует графику работы. Пн-Пт: 12:00-23:00, Сб-Вс: 13:00-22:00');
+                return;
+            }
+            
+            // Проверка имени и фамилии
+            const name = document.getElementById('clientName').value.trim();
+            if (!validateFullName(name)) {
+                alert('Пожалуйста, введите фамилию и имя через пробел (например: Иванов Иван)');
+                return;
+            }
+            
+            // Проверка Telegram
+            const telegram = document.getElementById('telegram').value.trim();
+            if (!telegram.startsWith('@')) {
+                alert('Telegram ник должен начинаться с символа @');
+                return;
+            }
+            
             // Собираем данные
             const requestData = {
                 id: 'MSK-' + Date.now().toString().slice(-8),
-                name: document.getElementById('clientName').value.trim(),
+                name: name,
                 phone: document.getElementById('clientPhone').value.trim(),
+                telegram: telegram,
                 address: document.getElementById('remoteService').checked 
                     ? 'Удаленная помощь' 
                     : document.getElementById('clientAddress').value.trim(),
                 device: document.getElementById('deviceType').value,
                 problem: document.getElementById('problemDescription').value.trim(),
                 appointmentDate: selectedDate,
+                appointmentTime: timeInput,
                 date: new Date().toLocaleDateString('ru-RU'),
                 time: new Date().toLocaleTimeString('ru-RU'),
                 status: 'new',
@@ -2431,7 +2518,7 @@
             };
             
             // Валидация
-            if (!requestData.name || !requestData.phone || !requestData.address || 
+            if (!requestData.name || !requestData.phone || !requestData.telegram || !requestData.address || 
                 !requestData.device || !requestData.problem) {
                 alert('Пожалуйста, заполните все обязательные поля');
                 return;
@@ -2484,6 +2571,37 @@
         });
     }
 
+    // Валидация полного имени (фамилия и имя)
+    function validateFullName(name) {
+        const parts = name.trim().split(' ');
+        return parts.length >= 2 && parts[0].length > 1 && parts[1].length > 1;
+    }
+
+    // Валидация времени
+    function validateTime(time) {
+        const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
+        return timeRegex.test(time);
+    }
+
+    // Валидация времени в зависимости от дня недели
+    function validateTimeByDay(dateStr, timeStr) {
+        // Парсим дату
+        const parts = dateStr.split('.');
+        const date = new Date(parts[2], parts[1] - 1, parts[0]);
+        const dayOfWeek = date.getDay(); // 0 - воскресенье, 1 - понедельник и т.д.
+        
+        // Парсим время
+        const [hours, minutes] = timeStr.split(':').map(Number);
+        const totalMinutes = hours * 60 + minutes;
+        
+        // Проверяем в зависимости от дня недели
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Пн-Пт
+            return totalMinutes >= 12*60 && totalMinutes <= 23*60;
+        } else { // Сб-Вс
+            return totalMinutes >= 13*60 && totalMinutes <= 22*60;
+        }
+    }
+
     // ОСНОВНАЯ ФУНКЦИЯ ОТПРАВКИ В TELEGRAM
     async function sendTelegramNotification(requestData) {
         if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
@@ -2495,16 +2613,18 @@
         console.log('🔄 Отправка заявки в Telegram...');
         
         // Форматируем сообщение для Telegram
-        const message = `🎯 *НОВАЯ ЗАЯВКА НА РЕМОНТ* 🚀
+        const message = `🎯 *НОВАЯ ЗАЯВКА НА ДИАГНОСТИКУ* 🚀
 
 📋 *Детали заявки:*
 🆔 *ID заявки:* ${requestData.id}
 👤 *Клиент:* ${requestData.name}
 📞 *Телефон:* \`${requestData.phone}\`
+📱 *Telegram:* ${requestData.telegram}
 📍 *Адрес:* ${requestData.address}
 💻 *Устройство:* ${requestData.device}
 📅 *Дата записи:* ${requestData.appointmentDate}
-⏰ *Время создания:* ${requestData.time}
+⏰ *Время записи:* ${requestData.appointmentTime}
+🕐 *Время создания:* ${requestData.time}
 
 🔧 *Описание проблемы:*
 ${requestData.problem}
@@ -2544,7 +2664,7 @@ ${requestData.problem}
                 
                 // Пробуем альтернативный метод с простым текстом
                 try {
-                    const altUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent('Новая заявка: ' + requestData.name + ', тел: ' + requestData.phone + ', устройство: ' + requestData.device)}`;
+                    const altUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent('Новая заявка: ' + requestData.name + ', тел: ' + requestData.phone + ', Telegram: ' + requestData.telegram + ', время: ' + requestData.appointmentTime)}`;
                     await fetch(altUrl);
                     console.log('✅ Отправлено через альтернативный метод');
                     return true;
@@ -2560,7 +2680,7 @@ ${requestData.problem}
             try {
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
-                iframe.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent('НОВАЯ ЗАЯВКА: ' + requestData.name + ' | Тел: ' + requestData.phone + ' | Устройство: ' + requestData.device)}`;
+                iframe.src = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent('НОВАЯ ЗАЯВКА: ' + requestData.name + ' | Тел: ' + requestData.phone + ' | Telegram: ' + requestData.telegram + ' | Время: ' + requestData.appointmentTime)}`;
                 document.body.appendChild(iframe);
                 
                 setTimeout(() => {
@@ -2606,8 +2726,10 @@ ${requestData.problem}
                 <p><strong>${requestData.name}</strong>, ваша заявка принята!</p>
                 <p><strong>Номер заявки:</strong> ${requestData.id}</p>
                 <p><strong>Телефон:</strong> ${requestData.phone}</p>
+                <p><strong>Telegram:</strong> ${requestData.telegram}</p>
                 <p><strong>Устройство:</strong> ${requestData.device}</p>
                 <p><strong>Дата записи:</strong> ${requestData.appointmentDate}</p>
+                <p><strong>Время записи:</strong> ${requestData.appointmentTime}</p>
                 <p><strong>Дата создания:</strong> ${requestData.date} ${requestData.time}</p>
                 ${telegramStatus}
             `;
@@ -2775,12 +2897,14 @@ ${requestData.problem}
         
         const testData = {
             id: 'TEST-' + Date.now().toString().slice(-8),
-            name: 'Тестовый клиент',
+            name: 'Иванов Иван',
             phone: '+7 (999) 999-99-99',
+            telegram: '@testuser',
             address: 'Тестовый адрес',
             device: 'Ноутбук',
-            problem: 'Тестовое описание проблемы для проверки работы Telegram бота',
+            problem: 'Тестовое описание проблемы',
             appointmentDate: new Date().toLocaleDateString('ru-RU'),
+            appointmentTime: '14:30',
             date: new Date().toLocaleDateString('ru-RU'),
             time: new Date().toLocaleTimeString('ru-RU'),
             status: 'test'
