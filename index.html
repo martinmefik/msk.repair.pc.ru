@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Профессиональный ремонт компьютеров и ноутбуков в Москве. Выезд на дом и удаленная помощь. Быстро, качественно, с гарантией!">
     <title>MSK REPAIR PC | Ремонт компьютеров и ноутбуков в Москве</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -801,13 +802,36 @@
             margin-right: 10px;
             width: 20px;
             height: 20px;
-            accent-color: var(--secondary);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: var(--input-bg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .checkbox-group input:checked {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .checkbox-group input:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
         }
 
         .checkbox-group label {
             color: var(--light);
             margin-bottom: 0;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .word-count {
@@ -1499,15 +1523,15 @@
 <body>
     <!-- Фон с параллакс эффектом -->
     <div class="parallax">
-        <div class="parallax-bg"></div>
+        <div class="parallax-bg" aria-hidden="true"></div>
         <div class="parallax-overlay"></div>
     </div>
 
     <!-- Шапка сайта -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-laptop-code"></i>
+            <a href="#" class="logo" aria-label="MSK REPAIR PC - главная страница">
+                <i class="fas fa-laptop-code" aria-hidden="true"></i>
                 <span class="logo-text">MSK REPAIR PC</span>
             </a>
             <nav>
@@ -1519,7 +1543,7 @@
                 </ul>
             </nav>
             <div class="user-section">
-                <button id="loginBtn" class="btn-main">Войти / Регистрация</button>
+                <button id="loginBtn" class="btn-main" aria-label="Войти в аккаунт">Войти / Регистрация</button>
             </div>
         </div>
     </header>
@@ -1530,41 +1554,41 @@
             <div class="hero-content">
                 <h1>Профессиональный ремонт компьютеров и ноутбуков в Москве</h1>
                 <p>Выезд на дом и удаленная помощь. Быстро, качественно, с гарантией!</p>
-                <button id="createRequestBtn" class="btn-main">Создать заявку</button>
+                <button id="createRequestBtn" class="btn-main" aria-label="Создать заявку на ремонт">Создать заявку</button>
                 
                 <!-- ПЕРЕРАБОТАННАЯ График работы (смещена ниже) -->
                 <div class="work-hours">
-                    <h3><i class="fas fa-clock"></i> График работы</h3>
+                    <h3><i class="fas fa-clock" aria-hidden="true"></i> График работы</h3>
                     
                     <div class="work-hours-grid">
                         <div class="work-hours-item">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                             <h4>Понедельник - Пятница</h4>
                             <p>12:00 - 23:00</p>
                         </div>
                         <div class="work-hours-item">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                             <h4>Суббота - Воскресенье</h4>
                             <p>13:00 - 22:00</p>
                         </div>
                         <div class="work-hours-item">
-                            <i class="fas fa-car"></i>
+                            <i class="fas fa-car" aria-hidden="true"></i>
                             <h4>Время выезда</h4>
                             <p>30-40 минут</p>
                         </div>
                         <div class="work-hours-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <h4>Зона обслуживания</h4>
                             <p>Только г. Москва</p>
                         </div>
                     </div>
                     
                     <p class="warning-text">
-                        <i class="fas fa-exclamation-triangle"></i> Выезд мастера осуществляться на территории города Москва
+                        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i> Выезд мастера осуществляться на территории города Москва
                     </p>
                     
                     <p class="warning-text">
-                        <i class="fas fa-exclamation-circle"></i> Для создания обращения из Московской области, звоните по телефону указанному в самом низу сайта
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Для создания обращения из Московской области, звоните по телефону указанному в самом низу сайта
                     </p>
                     
                     <div class="guarantee-note">
@@ -1583,7 +1607,7 @@
             <h2 class="section-title">Почему нам стоит выбрать и довериться</h2>
             <div class="reasons">
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="reason-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                     <h3>Экспресс-ремонт</h3>
                     <p>Мы понимаем, как важно вернуть устройство к жизни быстро. Среднее время выезда мастера - 30-40 минут. Большинство ремонтов мы выполняем на месте в течение 1-2 часов.</p>
                     <div class="reason-details">
@@ -1596,7 +1620,7 @@
                     </div>
                 </div>
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="reason-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                     <h3>Гарантия и качество</h3>
                     <p>Мы предоставляем официальную гарантию на все виды работ и используемые комплектующие. Все детали проходят тщательную проверку на соответствие стандартам качества.</p>
                     <div class="reason-details">
@@ -1609,7 +1633,7 @@
                     </div>
                 </div>
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="reason-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
                     <h3>Опытный мастер</h3>
                     <p>Андрей - профессиональный мастер с 2-летним стажем работы. Имеет глубокие знания в области компьютерного оборудования и современных технологий ремонта.</p>
                     <div class="reason-details">
@@ -1622,7 +1646,7 @@
                     </div>
                 </div>
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="reason-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                     <h3>Честность и прозрачность</h3>
                     <p>Мы ценим доверие наших клиентов и работаем максимально честно. Цена озвучивается до начала работ и не меняется в процессе. Все этапы ремонта согласовываются с клиентом.</p>
                     <div class="reason-details">
@@ -1635,7 +1659,7 @@
                     </div>
                 </div>
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-tools"></i></div>
+                    <div class="reason-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
                     <h3>Полный спектр услуг</h3>
                     <p>Мы решаем любые проблемы с компьютерной техникой - от простой чистки от пыли до сложного ремонта материнских плат и восстановления данных с поврежденных носителей.</p>
                     <div class="reason-details">
@@ -1648,7 +1672,7 @@
                     </div>
                 </div>
                 <div class="reason">
-                    <div class="reason-icon"><i class="fas fa-headset"></i></div>
+                    <div class="reason-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
                     <h3>Клиентоориентированность</h3>
                     <p>Мы не просто ремонтируем технику - мы заботимся о комфорте наших клиентов. Гибкий график, выезд в удобное время, консультации после ремонта - это наш стандарт работы.</p>
                     <div class="reason-details">
@@ -1704,7 +1728,7 @@
                         </div>
                         
                         <div class="experience">
-                            <i class="fas fa-award"></i> 2 года успешной работы • 100+ довольных клиентов
+                            <i class="fas fa-award" aria-hidden="true"></i> 2 года успешной работы • 100+ довольных клиентов
                         </div>
                     </div>
                 </div>
@@ -1751,11 +1775,11 @@
             <div class="form-container">
                 <!-- Блок для неавторизованных пользователей -->
                 <div id="loginRequired" class="login-required">
-                    <h3><i class="fas fa-lock"></i> Для записи на ремонт, необходимо авторизоваться</h3>
+                    <h3><i class="fas fa-lock" aria-hidden="true"></i> Для записи на ремонт, необходимо авторизоваться</h3>
                     <p>Пожалуйста, войдите в свой аккаунт или зарегистрируйтесь, чтобы создать заявку на ремонт</p>
                     <div class="auth-buttons">
-                        <button id="showRegisterBtn" class="auth-btn btn-register">Регистрация</button>
-                        <button id="showLoginBtn" class="auth-btn btn-login">Вход в аккаунт</button>
+                        <button id="showRegisterBtn" class="auth-btn btn-register" aria-label="Зарегистрироваться">Регистрация</button>
+                        <button id="showLoginBtn" class="auth-btn btn-login" aria-label="Войти в аккаунт">Вход в аккаунт</button>
                     </div>
                 </div>
 
@@ -1771,7 +1795,7 @@
                     <div class="datetime-selection">
                         <div class="date-selection">
                             <h3>Выберите дату</h3>
-                            <input type="text" id="datePicker" class="flatpickr-input" placeholder="Выберите дату" readonly>
+                            <input type="text" id="datePicker" class="flatpickr-input" placeholder="Выберите дату" readonly aria-label="Выберите дату для записи">
                         </div>
                         <div class="time-selection">
                             <h3>Выберите время</h3>
@@ -1816,8 +1840,8 @@
         <!-- Раздел "Мои заявки" -->
         <section id="my-requests" class="my-requests fade-in" style="display:none;">
             <div class="my-requests-header">
-                <a href="#" id="backToMain" class="back-to-main"><i class="fas fa-arrow-left"></i> Вернуться на главную</a>
-                <button id="logoutBtn" class="btn-logout">Выйти из аккаунта</button>
+                <a href="#" id="backToMain" class="back-to-main"><i class="fas fa-arrow-left" aria-hidden="true"></i> Вернуться на главную</a>
+                <button id="logoutBtn" class="btn-logout" aria-label="Выйти из аккаунта">Выйти из аккаунта</button>
             </div>
             <h2 class="section-title">Мои заявки</h2>
             <div id="requestsList">
@@ -1831,28 +1855,28 @@
                 <div class="footer-section">
                     <h3>Контакты</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-phone"></i> +7 (977) 477-05-87</li>
-                        <li><i class="fas fa-envelope"></i> mskrepairpc@gmail.com</li>
-                        <li><i class="fab fa-telegram"></i> Telegram: @Official_partner_of_Skoda</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> +7 (977) 477-05-87</li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> mskrepairpc@gmail.com</li>
+                        <li><i class="fab fa-telegram" aria-hidden="true"></i> Telegram: @Official_partner_of_Skoda</li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>График работы</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-calendar-alt"></i> Пн-Пт: 12:00 - 23:00</li>
-                        <li><i class="fas fa-calendar-alt"></i> Сб-Вс: 13:00 - 22:00</li>
-                        <li><i class="fas fa-clock"></i> Выезд в течение 30-40 минут</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Только г. Москва</li>
+                        <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> Пн-Пт: 12:00 - 23:00</li>
+                        <li><i class="fas fa-calendar-alt" aria-hidden="true"></i> Сб-Вс: 13:00 - 22:00</li>
+                        <li><i class="fas fa-clock" aria-hidden="true"></i> Выезд в течение 30-40 минут</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Только г. Москва</li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Услуги</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-laptop"></i> Ремонт ноутбуков</li>
-                        <li><i class="fas fa-desktop"></i> Ремонт компьютеров</li>
-                        <li><i class="fas fa-wifi"></i> Удаленная помощь</li>
-                        <li><i class="fas fa-database"></i> Восстановление данных</li>
-                        <li><i class="fas fa-tools"></i> Апгрейд и модернизация</li>
+                        <li><i class="fas fa-laptop" aria-hidden="true"></i> Ремонт ноутбуков</li>
+                        <li><i class="fas fa-desktop" aria-hidden="true"></i> Ремонт компьютеров</li>
+                        <li><i class="fas fa-wifi" aria-hidden="true"></i> Удаленная помощь</li>
+                        <li><i class="fas fa-database" aria-hidden="true"></i> Восстановление данных</li>
+                        <li><i class="fas fa-tools" aria-hidden="true"></i> Апгрейд и модернизация</li>
                     </ul>
                 </div>
             </div>
@@ -1863,10 +1887,10 @@
     </div>
 
     <!-- Модальное окно регистрации/входа -->
-    <div id="authModal" class="modal">
+    <div id="authModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="authModalTitle">
         <div class="modal-content">
-            <span class="close-modal" id="closeAuth">&times;</span>
-            <h2>Авторизация</h2>
+            <span class="close-modal" id="closeAuth" aria-label="Закрыть окно">&times;</span>
+            <h2 id="authModalTitle">Авторизация</h2>
             
             <div class="modal-tabs">
                 <button class="modal-tab active" data-tab="register">Регистрация</button>
@@ -1916,10 +1940,10 @@
     </div>
 
     <!-- Модальное окно подтверждения заявки -->
-    <div id="successModal" class="modal">
+    <div id="successModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="successModalTitle">
         <div class="modal-content">
-            <span class="close-modal" id="closeSuccess">&times;</span>
-            <h2>Благодарим за выбор!</h2>
+            <span class="close-modal" id="closeSuccess" aria-label="Закрыть окно">&times;</span>
+            <h2 id="successModalTitle">Благодарим за выбор!</h2>
             <p>В рабочее время с вами свяжется мастер для уточнения деталей.</p>
             <p><strong>Контакт мастера:</strong> Telegram @Official_partner_of_Skoda</p>
             <p>Сохраните его, если звонок не поступит, обратитесь по контактам.</p>
@@ -1928,10 +1952,10 @@
     </div>
 
     <!-- Админ панель на полный экран -->
-    <div id="adminPanel" class="admin-panel">
+    <div id="adminPanel" class="admin-panel" aria-hidden="true" role="dialog" aria-labelledby="adminPanelTitle">
         <div class="admin-header">
-            <h2><i class="fas fa-cogs"></i> Админ панель MSK REPAIR PC</h2>
-            <button class="close-admin" id="closeAdmin">&times;</button>
+            <h2 id="adminPanelTitle"><i class="fas fa-cogs" aria-hidden="true"></i> Админ панель MSK REPAIR PC</h2>
+            <button class="close-admin" id="closeAdmin" aria-label="Закрыть админ панель">&times;</button>
         </div>
         
         <!-- Табы в админ панели -->
@@ -2010,10 +2034,10 @@
     </div>
 
     <!-- Админ логин -->
-    <div id="adminLoginModal" class="modal">
+    <div id="adminLoginModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="adminLoginTitle">
         <div class="modal-content">
-            <span class="close-modal" id="closeAdminLogin">&times;</span>
-            <h2>Вход в админ панель</h2>
+            <span class="close-modal" id="closeAdminLogin" aria-label="Закрыть окно">&times;</span>
+            <h2 id="adminLoginTitle">Вход в админ панель</h2>
             <form id="adminLoginForm">
                 <div class="form-group">
                     <label for="adminUsername">Логин</label>
@@ -2028,318 +2052,147 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
-    <script>
-        // Имитация базы данных в localStorage с синхронизацией для Chrome и Яндекс
-        const DB = {
-            init: function() {
-                // Инициализация хранилищ, если их нет
-                if (!this.getStorageItem('requests')) {
-                    this.setStorageItem('requests', JSON.stringify([]));
-                }
-                if (!this.getStorageItem('users')) {
-                    this.setStorageItem('users', JSON.stringify([]));
-                }
-                if (!this.getStorageItem('userIPs')) {
-                    this.setStorageItem('userIPs', JSON.stringify([]));
-                }
-                if (!this.getStorageItem('bannedWords')) {
-                    this.setStorageItem('bannedWords', JSON.stringify([
-                        'fuck', 'shit', 'asshole', 'bitch', 'dick', 
-                        'пидор', 'сука', 'блядь', 'хуй', 'пизда'
-                    ]));
-                }
-                if (!this.getStorageItem('bookedSlots')) {
-                    this.setStorageItem('bookedSlots', JSON.stringify({}));
-                }
-                
-                // Инициализация админа
-                if (!this.getStorageItem('admin')) {
-                    this.setStorageItem('admin', JSON.stringify({
-                        login: 'martin_mefik',
-                        password: 'Andrey198765!'
-                    }));
-                }
-                
-                console.log('База данных инициализирована');
-            },
-            
-            // Универсальный метод получения данных из хранилища
-            getStorageItem: function(key) {
-                try {
-                    // Пробуем получить из localStorage
-                    return localStorage.getItem(key);
-                } catch (e) {
-                    console.warn('localStorage недоступен, используем sessionStorage');
-                    return sessionStorage.getItem(key);
-                }
-            },
-            
-            // Универсальный метод сохранения данных в хранилище
-            setStorageItem: function(key, value) {
-                try {
-                    localStorage.setItem(key, value);
-                    // Дублируем в sessionStorage для синхронизации
-                    sessionStorage.setItem(key, value);
-                } catch (e) {
-                    console.warn('localStorage недоступен, используем sessionStorage');
-                    sessionStorage.setItem(key, value);
-                }
-            },
-            
-            // Работа с заявками
-            getRequests: function() {
-                const requests = this.getStorageItem('requests');
-                return requests ? JSON.parse(requests) : [];
-            },
-            
-            saveRequest: function(request) {
-                const requests = this.getRequests();
-                requests.push(request);
-                this.setStorageItem('requests', JSON.stringify(requests));
-            },
-            
-            updateRequest: function(id, updates) {
-                const requests = this.getRequests();
-                const index = requests.findIndex(req => req.id === id);
-                if (index !== -1) {
-                    requests[index] = {...requests[index], ...updates};
-                    this.setStorageItem('requests', JSON.stringify(requests));
-                    return true;
-                }
-                return false;
-            },
-            
-            // Работа с забронированными слотами
-            getBookedSlots: function() {
-                const bookedSlots = this.getStorageItem('bookedSlots');
-                return bookedSlots ? JSON.parse(bookedSlots) : {};
-            },
-            
-            bookSlot: function(date, time) {
-                const bookedSlots = this.getBookedSlots();
-                const slotKey = `${date}_${time}`;
-                
-                if (bookedSlots[slotKey]) {
-                    return false; // Слот уже занят
-                }
-                
-                bookedSlots[slotKey] = true;
-                this.setStorageItem('bookedSlots', JSON.stringify(bookedSlots));
-                return true;
-            },
-            
-            freeSlot: function(date, time) {
-                const bookedSlots = this.getBookedSlots();
-                const slotKey = `${date}_${time}`;
-                
-                if (bookedSlots[slotKey]) {
-                    delete bookedSlots[slotKey];
-                    this.setStorageItem('bookedSlots', JSON.stringify(bookedSlots));
-                    return true;
-                }
-                return false;
-            },
-            
-            isSlotBooked: function(date, time) {
-                const bookedSlots = this.getBookedSlots();
-                const slotKey = `${date}_${time}`;
-                return !!bookedSlots[slotKey];
-            },
-            
-            // Работа с пользователями
-            getUsers: function() {
-                const users = this.getStorageItem('users');
-                return users ? JSON.parse(users) : [];
-            },
-            
-            saveUser: function(user) {
-                const users = this.getUsers();
-                users.push(user);
-                this.setStorageItem('users', JSON.stringify(users));
-            },
-            
-            getUserByIP: function(ip) {
-                const userIPs = this.getStorageItem('userIPs');
-                const parsedIPs = userIPs ? JSON.parse(userIPs) : [];
-                const userIP = parsedIPs.find(item => item.ip === ip);
-                if (userIP) {
-                    const users = this.getUsers();
-                    return users.find(user => user.username === userIP.username);
-                }
-                return null;
-            },
-            
-            saveUserIP: function(ip, username) {
-                const userIPs = this.getStorageItem('userIPs');
-                const parsedIPs = userIPs ? JSON.parse(userIPs) : [];
-                const existing = parsedIPs.find(item => item.ip === ip);
-                if (existing) {
-                    existing.username = username;
-                } else {
-                    parsedIPs.push({ip, username});
-                }
-                this.setStorageItem('userIPs', JSON.stringify(parsedIPs));
-            },
-            
-            // Удаление пользователя по IP (выход из аккаунта)
-            removeUserIP: function(ip) {
-                const userIPs = this.getStorageItem('userIPs');
-                const parsedIPs = userIPs ? JSON.parse(userIPs) : [];
-                const filtered = parsedIPs.filter(item => item.ip !== ip);
-                this.setStorageItem('userIPs', JSON.stringify(filtered));
-            },
-            
-            // Поиск пользователя по телефону и email (для входа)
-            findUserByCredentials: function(phone, email) {
-                const users = this.getUsers();
-                return users.find(user => 
-                    user.phone === phone && 
-                    user.email.toLowerCase() === email.toLowerCase()
-                );
-            },
-            
-            // Проверка никнейма
-            isValidUsername: function(username) {
-                // Проверка на английские буквы и цифры
-                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                    return {valid: false, reason: 'Ник должен содержать только английские буквы, цифры и символ _'};
-                }
-                
-                // Проверка на неприличные слова
-                const bannedWords = this.getStorageItem('bannedWords');
-                const parsedBannedWords = bannedWords ? JSON.parse(bannedWords) : [];
-                const lowerUsername = username.toLowerCase();
-                
-                for (let word of parsedBannedWords) {
-                    if (lowerUsername.includes(word.toLowerCase())) {
-                        return {valid: false, reason: 'Ник содержит неприличное слово'};
-                    }
-                }
-                
-                // Проверка на уникальность
-                const users = this.getUsers();
-                if (users.find(user => user.username === username)) {
-                    return {valid: false, reason: 'Этот ник уже занят'};
-                }
-                
-                return {valid: true};
-            },
-            
-            // Получение заявок пользователя
-            getUserRequests: function(username) {
-                const requests = this.getRequests();
-                return requests.filter(req => req.username === username);
-            },
-            
-            // Получение активных заявок (новые и в работе)
-            getActiveRequests: function() {
-                const requests = this.getRequests();
-                return requests.filter(req => 
-                    req.status === 'new' || req.status === 'in_progress'
-                );
-            },
-            
-            // Получение архивных заявок (отмененные и завершенные)
-            getArchiveRequests: function() {
-                const requests = this.getRequests();
-                return requests.filter(req => 
-                    req.status === 'cancelled' || req.status === 'completed'
-                );
-            },
-            
-            // Проверка, может ли пользователь создать новую заявку
-            canCreateRequest: function(username) {
-                const requests = this.getRequests();
-                const userRequests = requests.filter(req => req.username === username);
-                
-                // Проверяем, есть ли незавершенные заявки
-                const activeRequests = userRequests.filter(req => 
-                    req.status === 'new' || req.status === 'in_progress'
-                );
-                
-                return activeRequests.length === 0;
-            }
-        };
+ <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+<script>
+    // Конфигурация
+    const API_BASE_URL = 'http://localhost:3000/api'; // Для разработки
+    // Для продакшена используйте: const API_BASE_URL = '/api';
+    
+    // Основные переменные
+    let currentUser = null;
+    let isAdmin = false;
+    let adminToken = null;
+    let selectedDate = null;
+    let selectedTime = null;
+    let flatpickrInstance = null;
+    let bookedSlots = {};
+    let isParallaxScrolling = false;
+    let parallaxTimeout = null;
 
-        // Инициализация базы данных при загрузке
-        DB.init();
-
-        // Получение IP пользователя (упрощенная версия)
-        function getUserIP() {
-            // Для синхронизации между браузерами используем комбинированный идентификатор
-            let userIdentifier = DB.getStorageItem('userIdentifier');
-            if (!userIdentifier) {
-                // Создаем уникальный идентификатор для пользователя
-                userIdentifier = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                DB.setStorageItem('userIdentifier', userIdentifier);
-            }
-            return userIdentifier;
-        }
-
-        // Основные переменные
-        let currentUser = null;
-        let isAdmin = false;
-        let selectedDate = null;
-        let selectedTime = null;
-        let flatpickrInstance = null;
-
-        // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем, есть ли сохраненный пользователь по IP
-            const userIP = getUserIP();
-            const user = DB.getUserByIP(userIP);
-            
-            if (user) {
-                currentUser = user;
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        // Проверяем соединение с сервером
+        checkServerConnection();
+        
+        // Проверяем, есть ли сохраненный пользователь
+        const userData = localStorage.getItem('currentUser');
+        if (userData) {
+            try {
+                currentUser = JSON.parse(userData);
                 updateUIForLoggedInUser();
+            } catch (e) {
+                console.error('Ошибка парсинга данных пользователя:', e);
+                localStorage.removeItem('currentUser');
             }
-            
-            // Инициализация анимаций появления при скролле
-            initScrollAnimations();
-            
-            // Инициализация параллакса
-            initParallax();
-            
-            // Настройка обработчиков событий
-            setupEventListeners();
-            
-            // Инициализация календаря
-            initDatePicker();
-            
-            // Загрузка заявок для админа, если он авторизован
-            if (DB.getStorageItem('adminLoggedIn') === 'true') {
-                isAdmin = true;
-                document.getElementById('loginBtn').textContent = 'Админ';
+        }
+        
+        // Проверяем админ токен
+        const savedToken = localStorage.getItem('adminToken');
+        if (savedToken) {
+            adminToken = savedToken;
+            isAdmin = true;
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.textContent = 'Админ';
             }
-            
-            // Обновление интерфейса в зависимости от авторизации
-            updateRequestFormVisibility();
-        });
-
+        }
+        
+        // Инициализация анимаций появления при скролле
+        initScrollAnimations();
+        
+        // Инициализация параллакса
+        initParallax();
+        
+        // Настройка обработчиков событий
+        setupEventListeners();
+        
         // Инициализация календаря
-        function initDatePicker() {
-            // Рассчитываем максимальную дату (месяц вперед)
-            const today = new Date();
-            const maxDate = new Date();
-            maxDate.setMonth(today.getMonth() + 1);
-            
-            flatpickrInstance = flatpickr("#datePicker", {
-                locale: "ru",
-                minDate: "today",
-                maxDate: maxDate,
-                dateFormat: "d.m.Y",
-                disableMobile: true,
-                onChange: function(selectedDates, dateStr) {
-                    selectedDate = dateStr;
-                    selectedTime = null;
-                    updateTimeSlots();
-                    updateSelectedDateTimeDisplay();
+        initDatePicker();
+        
+        // Загрузка занятых слотов
+        loadBookedSlots();
+        
+        // Обновление интерфейса в зависимости от авторизации
+        updateRequestFormVisibility();
+    });
+
+    // Проверка соединения с сервером
+    async function checkServerConnection() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/health`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             });
             
-            // Инициализация календаря для админ панели
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            if (data.success) {
+                console.log('Сервер подключен успешно');
+            } else {
+                showServerError('Ошибка сервера');
+            }
+        } catch (error) {
+            console.error('Ошибка подключения к серверу:', error);
+            showServerError('Ошибка подключения к серверу. Проверьте, запущен ли сервер на localhost:3000');
+        }
+    }
+
+    // Показать ошибку сервера
+    function showServerError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = `
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 10000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            max-width: 300px;
+        `;
+        errorDiv.innerHTML = `
+            <strong>Ошибка подключения к серверу</strong><br>
+            <small>${message}</small>
+        `;
+        document.body.appendChild(errorDiv);
+        
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 10000);
+    }
+
+    // Инициализация календаря
+    function initDatePicker() {
+        // Рассчитываем максимальную дату (месяц вперед)
+        const today = new Date();
+        const maxDate = new Date();
+        maxDate.setMonth(today.getMonth() + 1);
+        
+        flatpickrInstance = flatpickr("#datePicker", {
+            locale: "ru",
+            minDate: "today",
+            maxDate: maxDate,
+            dateFormat: "d.m.Y",
+            disableMobile: true,
+            onChange: function(selectedDates, dateStr) {
+                selectedDate = dateStr;
+                selectedTime = null;
+                updateTimeSlots();
+                updateSelectedDateTimeDisplay();
+            }
+        });
+        
+        // Инициализация календаря для админ панели
+        const adminDateFilter = document.getElementById('adminDateFilter');
+        if (adminDateFilter) {
             flatpickr("#adminDateFilter", {
                 locale: "ru",
                 dateFormat: "d.m.Y",
@@ -2348,237 +2201,303 @@
                     loadAdminRequests(dateStr);
                 }
             });
-            
-            // Установка сегодняшней даты по умолчанию
-            const todayFormatted = `${today.getDate().toString().padStart(2, '0')}.${(today.getMonth() + 1).toString().padStart(2, '0')}.${today.getFullYear()}`;
-            if (flatpickrInstance) {
-                flatpickrInstance.setDate(todayFormatted, false);
-            }
-            selectedDate = todayFormatted;
-            
-            // Генерация временных слотов
-            updateTimeSlots();
         }
-
-        // Обновление видимости формы заявки
-        function updateRequestFormVisibility() {
-            if (currentUser) {
-                document.getElementById('loginRequired').style.display = 'none';
-                document.getElementById('requestFormContainer').style.display = 'block';
-            } else {
-                document.getElementById('loginRequired').style.display = 'block';
-                document.getElementById('requestFormContainer').style.display = 'none';
-            }
+        
+        // Установка сегодняшней даты по умолчанию
+        const todayFormatted = `${today.getDate().toString().padStart(2, '0')}.${(today.getMonth() + 1).toString().padStart(2, '0')}.${today.getFullYear()}`;
+        if (flatpickrInstance) {
+            flatpickrInstance.setDate(todayFormatted, false);
         }
-
+        selectedDate = todayFormatted;
+        
         // Генерация временных слотов
-        function updateTimeSlots() {
-            if (!selectedDate || !currentUser) return;
-            
-            const timeSlotsContainer = document.getElementById('timeSlots');
-            timeSlotsContainer.innerHTML = '';
-            
-            // Определяем день недели для выбранной даты
-            const dateParts = selectedDate.split('.');
-            const dateObj = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-            const dayOfWeek = dateObj.getDay(); // 0 - воскресенье, 1 - понедельник и т.д.
-            
-            // Определяем рабочие часы в зависимости от дня недели
-            let workHours = [];
-            
-            // Пн-Пт: 12:00 - 23:00 (интервал 2 часа)
-            // Сб-Вс: 13:00 - 22:00 (интервал 2 часа)
-            
-            if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Пн-Пт
-                for (let hour = 12; hour <= 21; hour += 2) {
-                    workHours.push(`${hour.toString().padStart(2, '0')}:00`);
-                }
-            } else { // Сб-Вс
-                for (let hour = 13; hour <= 20; hour += 2) {
-                    workHours.push(`${hour.toString().padStart(2, '0')}:00`);
+        updateTimeSlots();
+    }
+
+    // Загрузка занятых слотов с сервера
+    async function loadBookedSlots() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/slots/booked`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    bookedSlots = data.slots;
+                    updateTimeSlots();
                 }
             }
+        } catch (error) {
+            console.error('Ошибка загрузки слотов:', error);
+        }
+    }
+
+    // Проверка занятости слота
+    function isSlotBooked(date, time) {
+        const slotKey = `${date}_${time}`;
+        return bookedSlots[slotKey] || false;
+    }
+
+    // Обновление видимости формы заявки
+    function updateRequestFormVisibility() {
+        const loginRequired = document.getElementById('loginRequired');
+        const requestFormContainer = document.getElementById('requestFormContainer');
+        
+        if (!loginRequired || !requestFormContainer) return;
+        
+        if (currentUser) {
+            loginRequired.style.display = 'none';
+            requestFormContainer.style.display = 'block';
+        } else {
+            loginRequired.style.display = 'block';
+            requestFormContainer.style.display = 'none';
+        }
+    }
+
+    // Генерация временных слотов
+    function updateTimeSlots() {
+        if (!selectedDate || !currentUser) return;
+        
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        if (!timeSlotsContainer) return;
+        
+        timeSlotsContainer.innerHTML = '';
+        
+        // Определяем день недели для выбранной даты
+        const dateParts = selectedDate.split('.');
+        const dateObj = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+        const dayOfWeek = dateObj.getDay();
+        
+        // Определяем рабочие часы
+        let workHours = [];
+        
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+            for (let hour = 12; hour <= 21; hour += 2) {
+                workHours.push(`${hour.toString().padStart(2, '0')}:00`);
+            }
+            workHours.push('23:00');
+        } else {
+            for (let hour = 13; hour <= 20; hour += 2) {
+                workHours.push(`${hour.toString().padStart(2, '0')}:00`);
+            }
+            workHours.push('22:00');
+        }
+        
+        // Создаем кнопки для временных слотов
+        workHours.forEach(time => {
+            const timeSlot = document.createElement('button');
+            timeSlot.className = 'time-slot';
+            timeSlot.textContent = time;
+            timeSlot.dataset.time = time;
+            timeSlot.type = 'button';
+            timeSlot.setAttribute('aria-label', `Выбрать время ${time}`);
             
-            // Добавляем последний слот в зависимости от дня
-            if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-                workHours.push('23:00');
+            // Проверяем, занят ли слот
+            if (isSlotBooked(selectedDate, time)) {
+                timeSlot.classList.add('booked');
+                timeSlot.disabled = true;
+                timeSlot.setAttribute('aria-label', `Время ${time} занято`);
             } else {
-                workHours.push('22:00');
-            }
-            
-            // Создаем кнопки для временных слотов
-            workHours.forEach(time => {
-                const timeSlot = document.createElement('div');
-                timeSlot.className = 'time-slot';
-                timeSlot.textContent = time;
-                timeSlot.dataset.time = time;
-                
-                // Проверяем, занят ли слот
-                if (DB.isSlotBooked(selectedDate, time)) {
-                    timeSlot.classList.add('booked');
-                    timeSlot.title = 'Это время уже занято';
-                } else {
-                    timeSlot.addEventListener('click', function() {
-                        selectTimeSlot(time);
-                    });
-                }
-                
-                // Если это выбранный слот
-                if (selectedTime === time) {
-                    timeSlot.classList.add('selected');
-                }
-                
-                timeSlotsContainer.appendChild(timeSlot);
-            });
-            
-            // Если выбранное время больше не доступно, сбрасываем его
-            if (selectedTime && DB.isSlotBooked(selectedDate, selectedTime)) {
-                selectedTime = null;
-                updateSelectedDateTimeDisplay();
-            }
-        }
-
-        // Выбор временного слота
-        function selectTimeSlot(time) {
-            // Снимаем выделение со всех слотов
-            document.querySelectorAll('.time-slot').forEach(slot => {
-                slot.classList.remove('selected');
-            });
-            
-            // Выделяем выбранный слот
-            const selectedSlot = document.querySelector(`.time-slot[data-time="${time}"]`);
-            if (selectedSlot && !selectedSlot.classList.contains('booked')) {
-                selectedSlot.classList.add('selected');
-                selectedTime = time;
-                updateSelectedDateTimeDisplay();
-            }
-        }
-
-        // Обновление отображения выбранной даты и времени
-        function updateSelectedDateTimeDisplay() {
-            const selectedDateTimeDiv = document.getElementById('selectedDateTime');
-            const selectedDateSpan = document.getElementById('selectedDate');
-            const selectedTimeSpan = document.getElementById('selectedTime');
-            
-            if (selectedDate && selectedTime) {
-                selectedDateSpan.textContent = selectedDate;
-                selectedTimeSpan.textContent = selectedTime;
-                selectedDateTimeDiv.style.display = 'block';
-            } else {
-                selectedDateTimeDiv.style.display = 'none';
-            }
-        }
-
-        // Инициализация анимаций при скролле
-        function initScrollAnimations() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                timeSlot.addEventListener('click', function() {
+                    selectTimeSlot(time);
                 });
-            }, { threshold: 0.1 });
+            }
             
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
+            // Если это выбранный слот
+            if (selectedTime === time) {
+                timeSlot.classList.add('selected');
+                timeSlot.setAttribute('aria-label', `Выбрано время ${time}`);
+            }
+            
+            timeSlotsContainer.appendChild(timeSlot);
+        });
+        
+        // Если выбранное время занято, сбрасываем его
+        if (selectedTime && isSlotBooked(selectedDate, selectedTime)) {
+            selectedTime = null;
+            updateSelectedDateTimeDisplay();
         }
+    }
 
-        // Инициализация параллакса
-        function initParallax() {
-            window.addEventListener('scroll', function() {
+    // Выбор временного слота
+    function selectTimeSlot(time) {
+        // Снимаем выделение со всех слотов
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.classList.remove('selected');
+            slot.setAttribute('aria-label', slot.classList.contains('booked') ? 
+                `Время ${slot.dataset.time} занято` : `Выбрать время ${slot.dataset.time}`);
+        });
+        
+        // Выделяем выбранный слот
+        const selectedSlot = document.querySelector(`.time-slot[data-time="${time}"]`);
+        if (selectedSlot && !selectedSlot.classList.contains('booked')) {
+            selectedSlot.classList.add('selected');
+            selectedSlot.setAttribute('aria-label', `Выбрано время ${time}`);
+            selectedTime = time;
+            updateSelectedDateTimeDisplay();
+        }
+    }
+
+    // Обновление отображения выбранной даты и времени
+    function updateSelectedDateTimeDisplay() {
+        const selectedDateTimeDiv = document.getElementById('selectedDateTime');
+        const selectedDateSpan = document.getElementById('selectedDate');
+        const selectedTimeSpan = document.getElementById('selectedTime');
+        
+        if (!selectedDateTimeDiv || !selectedDateSpan || !selectedTimeSpan) return;
+        
+        if (selectedDate && selectedTime) {
+            selectedDateSpan.textContent = selectedDate;
+            selectedTimeSpan.textContent = selectedTime;
+            selectedDateTimeDiv.style.display = 'block';
+            selectedDateTimeDiv.setAttribute('aria-live', 'polite');
+        } else {
+            selectedDateTimeDiv.style.display = 'none';
+        }
+    }
+
+    // Инициализация анимаций при скролле
+    function initScrollAnimations() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
+    // Инициализация параллакса с throttling
+    function initParallax() {
+        window.addEventListener('scroll', function() {
+            if (isParallaxScrolling) return;
+            
+            isParallaxScrolling = true;
+            
+            clearTimeout(parallaxTimeout);
+            parallaxTimeout = setTimeout(function() {
                 const scrolled = window.pageYOffset;
                 const parallaxBg = document.querySelector('.parallax-bg');
                 if (parallaxBg) {
                     parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
                 }
-            });
-        }
+                isParallaxScrolling = false;
+            }, 16); // ~60 FPS
+        });
+    }
 
-        // Настройка обработчиков событий
-        function setupEventListeners() {
-            // Кнопка создания заявки
-            document.getElementById('createRequestBtn').addEventListener('click', function() {
+    // Настройка обработчиков событий
+    function setupEventListeners() {
+        // Кнопка создания заявки
+        const createRequestBtn = document.getElementById('createRequestBtn');
+        if (createRequestBtn) {
+            createRequestBtn.addEventListener('click', function() {
                 if (!currentUser) {
                     document.getElementById('authModal').classList.add('active');
                     showTab('register');
                 } else {
                     // Проверяем, может ли пользователь создать заявку
-                    if (!DB.canCreateRequest(currentUser.username)) {
-                        alert('У вас уже есть активная заявка. Дождитесь ее завершения или отмените ее.');
-                        showMyRequests();
-                        return;
-                    }
-                    // Прокручиваем к форме
-                    document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
+                    checkCanCreateRequest().then(canCreate => {
+                        if (!canCreate) {
+                            alert('У вас уже есть активная заявка. Дождитесь ее завершения или отмените ее.');
+                            showMyRequests();
+                            return;
+                        }
+                        // Прокручиваем к форме
+                        document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
+                    });
                 }
             });
-            
-            // Кнопки показа регистрации/входа
-            document.getElementById('showRegisterBtn').addEventListener('click', function() {
+        }
+        
+        // Кнопки показа регистрации/входа
+        const showRegisterBtn = document.getElementById('showRegisterBtn');
+        if (showRegisterBtn) {
+            showRegisterBtn.addEventListener('click', function() {
                 document.getElementById('authModal').classList.add('active');
                 showTab('register');
             });
-            
-            document.getElementById('showLoginBtn').addEventListener('click', function() {
+        }
+        
+        const showLoginBtn = document.getElementById('showLoginBtn');
+        if (showLoginBtn) {
+            showLoginBtn.addEventListener('click', function() {
                 document.getElementById('authModal').classList.add('active');
                 showTab('login');
             });
-            
-            // Кнопка возврата на главную
-            document.getElementById('backToMain').addEventListener('click', function(e) {
+        }
+        
+        // Кнопка возврата на главную
+        const backToMainBtn = document.getElementById('backToMain');
+        if (backToMainBtn) {
+            backToMainBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 hideMyRequests();
             });
-            
-            // Кнопка выхода из аккаунта (теперь в разделе "Мои заявки")
-            document.getElementById('logoutBtn').addEventListener('click', function() {
+        }
+        
+        // Кнопка выхода из аккаунта
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
                 logoutUser();
             });
-            
-            // Переключение вкладок в модальном окне
-            document.querySelectorAll('.modal-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    showTab(tabId);
-                });
+        }
+        
+        // Переключение вкладок в модальном окне
+        document.querySelectorAll('.modal-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                showTab(tabId);
             });
-            
-            // Переключение вкладок в админ панели
-            document.querySelectorAll('.admin-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Убираем активный класс со всех вкладок
-                    document.querySelectorAll('.admin-tab').forEach(t => {
-                        t.classList.remove('active');
-                    });
-                    document.querySelectorAll('.admin-tab-content').forEach(c => {
-                        c.classList.remove('active');
-                    });
-                    
-                    // Добавляем активный класс выбранной вкладке
-                    this.classList.add('active');
-                    document.getElementById(tabId + 'Tab').classList.add('active');
-                    
-                    // Загружаем данные для выбранной вкладки
-                    if (tabId === 'active') {
-                        loadAdminRequests();
-                    } else if (tabId === 'archive') {
-                        loadAdminArchive();
-                    }
+        });
+        
+        // Переключение вкладок в админ панели
+        document.querySelectorAll('.admin-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Убираем активный класс со всех вкладок
+                document.querySelectorAll('.admin-tab').forEach(t => {
+                    t.classList.remove('active');
                 });
+                document.querySelectorAll('.admin-tab-content').forEach(c => {
+                    c.classList.remove('active');
+                });
+                
+                // Добавляем активный класс выбранной вкладке
+                this.classList.add('active');
+                const tabContent = document.getElementById(tabId + 'Tab');
+                if (tabContent) {
+                    tabContent.classList.add('active');
+                }
+                
+                // Загружаем данные для выбранной вкладки
+                if (tabId === 'active') {
+                    loadAdminRequests();
+                } else if (tabId === 'archive') {
+                    loadAdminArchive();
+                }
             });
-            
-            // Кнопка обновления в админ панели
-            document.getElementById('refreshAdminBtn').addEventListener('click', function() {
+        });
+        
+        // Кнопка обновления в админ панели
+        const refreshAdminBtn = document.getElementById('refreshAdminBtn');
+        if (refreshAdminBtn) {
+            refreshAdminBtn.addEventListener('click', function() {
                 loadAdminRequests();
+                loadBookedSlots();
             });
-            
-            // Форма регистрации
-            document.getElementById('registerForm').addEventListener('submit', function(e) {
+        }
+        
+        // Форма регистрации
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const username = document.getElementById('regUsername').value.trim();
                 const phone = document.getElementById('regPhone').value.trim();
@@ -2591,7 +2510,7 @@
                 }
                 
                 if (!validatePhone(phone)) {
-                    alert('Пожалуйста, введите корректный номер телефона');
+                    alert('Пожалуйста, введите корректный номер телефона в формате +7 XXX XXX XX XX');
                     return;
                 }
                 
@@ -2601,40 +2520,56 @@
                 }
                 
                 // Проверка никнейма
-                const validation = DB.isValidUsername(username);
-                if (!validation.valid) {
-                    alert(`Ошибка: ${validation.reason}`);
+                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                    alert('Ник должен содержать только английские буквы, цифры и символ _');
                     return;
                 }
                 
-                // Создание пользователя
-                const newUser = {
-                    username: username,
-                    phone: phone,
-                    email: email.toLowerCase(),
-                    registrationDate: new Date().toISOString(),
-                    ip: getUserIP()
-                };
-                
-                // Сохранение пользователя
-                DB.saveUser(newUser);
-                DB.saveUserIP(getUserIP(), username);
-                
-                currentUser = newUser;
-                updateUIForLoggedInUser();
-                updateRequestFormVisibility();
-                
-                // Закрытие модального окна
-                document.getElementById('authModal').classList.remove('active');
-                
-                // Прокрутка к форме заявки
-                setTimeout(() => {
-                    document.getElementById('request').scrollIntoView({ behavior: 'smooth' });
-                }, 500);
+                try {
+                    // Регистрация на сервере
+                    const response = await fetch(`${API_BASE_URL}/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            username,
+                            phone,
+                            email,
+                            ip: getUserIP()
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        currentUser = data.user;
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        updateUIForLoggedInUser();
+                        updateRequestFormVisibility();
+                        
+                        // Закрытие модального окна
+                        document.getElementById('authModal').classList.remove('active');
+                        
+                        // Прокрутка к форме заявки
+                        setTimeout(() => {
+                            const requestSection = document.getElementById('request');
+                            if (requestSection) {
+                                requestSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }, 500);
+                    } else {
+                        alert(data.error || 'Ошибка регистрации');
+                    }
+                } catch (error) {
+                    console.error('Ошибка регистрации:', error);
+                    alert('Ошибка соединения с сервером');
+                }
             });
-            
-            // Форма входа
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
+        }
+        
+        // Форма входа
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const phone = document.getElementById('loginPhone').value.trim();
                 const email = document.getElementById('loginEmail').value.trim();
@@ -2645,26 +2580,41 @@
                     return;
                 }
                 
-                // Поиск пользователя
-                const user = DB.findUserByCredentials(phone, email);
-                
-                if (user) {
-                    currentUser = user;
-                    DB.saveUserIP(getUserIP(), user.username);
-                    updateUIForLoggedInUser();
-                    updateRequestFormVisibility();
-                    document.getElementById('authModal').classList.remove('active');
-                    document.getElementById('loginError').style.display = 'none';
+                try {
+                    // Вход на сервере
+                    const response = await fetch(`${API_BASE_URL}/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone, email })
+                    });
                     
-                    // Обновление временных слотов
-                    updateTimeSlots();
-                } else {
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        currentUser = data.user;
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        updateUIForLoggedInUser();
+                        updateRequestFormVisibility();
+                        document.getElementById('authModal').classList.remove('active');
+                        document.getElementById('loginError').style.display = 'none';
+                        
+                        // Обновление временных слотов
+                        updateTimeSlots();
+                    } else {
+                        document.getElementById('loginError').style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Ошибка входа:', error);
+                    document.getElementById('loginError').textContent = 'Ошибка соединения с сервером';
                     document.getElementById('loginError').style.display = 'block';
                 }
             });
-            
-            // Форма заявки
-            document.getElementById('requestForm').addEventListener('submit', function(e) {
+        }
+        
+        // Форма заявки
+        const requestForm = document.getElementById('requestForm');
+        if (requestForm) {
+            requestForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 if (!currentUser) {
@@ -2676,20 +2626,6 @@
                 // Проверка выбора даты и времени
                 if (!selectedDate || !selectedTime) {
                     alert('Пожалуйста, выберите дату и время для записи');
-                    return;
-                }
-                
-                // Проверка, занят ли слот
-                if (DB.isSlotBooked(selectedDate, selectedTime)) {
-                    alert('Извините, это время уже занято. Пожалуйста, выберите другое время.');
-                    updateTimeSlots();
-                    return;
-                }
-                
-                // Проверка, может ли пользователь создать новую заявку
-                if (!DB.canCreateRequest(currentUser.username)) {
-                    alert('У вас уже есть активная заявка. Дождитесь ее завершения или отмените ее.');
-                    showMyRequests();
                     return;
                 }
                 
@@ -2707,61 +2643,65 @@
                 }
                 
                 if (problem.length < 10) {
-                    alert('Пожалуйста, подробнее опишите проблему');
+                    alert('Пожалуйста, подробнее опишите проблему (минимум 10 символов)');
                     return;
                 }
                 
-                // Бронируем слот
-                if (!DB.bookSlot(selectedDate, selectedTime)) {
-                    alert('Извините, это время уже занято. Пожалуйста, выберите другое время.');
-                    updateTimeSlots();
-                    return;
-                }
-                
-                // Создание заявки
-                const request = {
-                    id: Date.now().toString(),
-                    username: currentUser.username,
-                    userPhone: currentUser.phone,
-                    userEmail: currentUser.email,
-                    fullName: fullName,
-                    phone: phone,
-                    address: remote ? 'Удаленно' : address,
-                    problem: problem,
-                    appointmentDate: selectedDate,
-                    appointmentTime: selectedTime,
-                    status: 'new',
-                    createdAt: new Date().toISOString(),
-                    remote: remote
-                };
-                
-                // Сохранение заявки
-                DB.saveRequest(request);
-                
-                // Очистка формы
-                document.getElementById('requestForm').reset();
-                document.getElementById('charCount').textContent = '1000';
-                selectedTime = null;
-                updateTimeSlots();
-                updateSelectedDateTimeDisplay();
-                
-                // Показ сообщения об успехе
-                document.getElementById('successModal').classList.add('active');
-                
-                // Обновление списка заявок пользователя
-                if (document.getElementById('my-requests').style.display !== 'none') {
-                    loadUserRequests();
-                }
-                
-                // Обновление админ панели, если она открыта
-                if (document.getElementById('adminPanel').classList.contains('active')) {
-                    loadAdminRequests();
+                try {
+                    // Создание заявки на сервере
+                    const response = await fetch(`${API_BASE_URL}/requests`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            username: currentUser.username,
+                            userPhone: currentUser.phone,
+                            userEmail: currentUser.email,
+                            fullName: fullName,
+                            phone: phone,
+                            address: remote ? 'Удаленно' : address,
+                            problem: problem,
+                            appointmentDate: selectedDate,
+                            appointmentTime: selectedTime,
+                            remote: remote
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Очистка формы
+                        document.getElementById('requestForm').reset();
+                        document.getElementById('charCount').textContent = '1000';
+                        selectedTime = null;
+                        
+                        // Обновляем занятые слоты
+                        await loadBookedSlots();
+                        updateSelectedDateTimeDisplay();
+                        
+                        // Показ сообщения об успехе
+                        document.getElementById('successModal').classList.add('active');
+                        
+                        // Обновление списка заявок пользователя
+                        if (document.getElementById('my-requests').style.display !== 'none') {
+                            loadUserRequests();
+                        }
+                    } else {
+                        alert(data.error || 'Ошибка создания заявки');
+                    }
+                } catch (error) {
+                    console.error('Ошибка создания заявки:', error);
+                    alert('Ошибка соединения с сервером');
                 }
             });
-            
-            // Чекбокс "Удаленно"
-            document.getElementById('remote').addEventListener('change', function() {
+        }
+        
+        // Чекбокс "Удаленно"
+        const remoteCheckbox = document.getElementById('remote');
+        if (remoteCheckbox) {
+            remoteCheckbox.addEventListener('change', function() {
                 const addressField = document.getElementById('address');
+                if (!addressField) return;
+                
                 if (this.checked) {
                     addressField.disabled = true;
                     addressField.placeholder = 'Не требуется при удаленной работе';
@@ -2772,25 +2712,37 @@
                     addressField.required = true;
                 }
             });
-            
-            // Счетчик символов (теперь 1000 вместо 7000)
-            document.getElementById('problem').addEventListener('input', function() {
+        }
+        
+        // Счетчик символов
+        const problemTextarea = document.getElementById('problem');
+        if (problemTextarea) {
+            problemTextarea.addEventListener('input', function() {
                 const maxLength = 1000;
                 const currentLength = this.value.length;
-                document.getElementById('charCount').textContent = maxLength - currentLength;
+                const charCount = document.getElementById('charCount');
+                if (charCount) {
+                    charCount.textContent = maxLength - currentLength;
+                }
                 
                 if (currentLength > maxLength) {
                     this.value = this.value.substring(0, maxLength);
-                    document.getElementById('charCount').textContent = 0;
+                    if (charCount) {
+                        charCount.textContent = 0;
+                    }
                 }
             });
-            
-            // Кнопка входа/админа
-            document.getElementById('loginBtn').addEventListener('click', function() {
+        }
+        
+        // Кнопка входа/админа
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function() {
                 if (isAdmin) {
                     // Показать админ панель
                     document.getElementById('adminPanel').classList.add('active');
                     loadAdminRequests();
+                    loadAdminArchive();
                 } else if (currentUser) {
                     // Показать заявки пользователя
                     showMyRequests();
@@ -2800,15 +2752,21 @@
                     showTab('login');
                 }
             });
-            
-            // Закрытие админ панели
-            document.getElementById('closeAdmin').addEventListener('click', function() {
+        }
+        
+        // Закрытие админ панели
+        const closeAdminBtn = document.getElementById('closeAdmin');
+        if (closeAdminBtn) {
+            closeAdminBtn.addEventListener('click', function() {
                 document.getElementById('adminPanel').classList.remove('active');
             });
-            
-            // Скрытая админ панель (доступ по тройному клику на логотип)
-            let adminClickCount = 0;
-            document.querySelector('.logo').addEventListener('click', function(e) {
+        }
+        
+        // Скрытая админ панель (доступ по тройному клику на логотип)
+        let adminClickCount = 0;
+        const logo = document.querySelector('.logo');
+        if (logo) {
+            logo.addEventListener('click', function(e) {
                 adminClickCount++;
                 setTimeout(() => { adminClickCount = 0; }, 1000);
                 
@@ -2817,184 +2775,317 @@
                     document.getElementById('adminLoginModal').classList.add('active');
                 }
             });
-            
-            // Форма входа в админ панель
-            document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+        }
+        
+        // Форма входа в админ панель
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        if (adminLoginForm) {
+            adminLoginForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const username = document.getElementById('adminUsername').value;
                 const password = document.getElementById('adminPassword').value;
                 
-                const adminData = JSON.parse(DB.getStorageItem('admin'));
-                
-                if (username === adminData.login && password === adminData.password) {
-                    isAdmin = true;
-                    DB.setStorageItem('adminLoggedIn', 'true');
-                    document.getElementById('adminLoginModal').classList.remove('active');
-                    document.getElementById('loginBtn').textContent = 'Админ';
-                    document.getElementById('adminPanel').classList.add('active');
-                    loadAdminRequests();
-                } else {
-                    alert('Неверный логин или пароль');
+                try {
+                    const response = await fetch(`${API_BASE_URL}/admin/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        isAdmin = true;
+                        adminToken = data.token;
+                        localStorage.setItem('adminToken', adminToken);
+                        document.getElementById('adminLoginModal').classList.remove('active');
+                        const loginBtn = document.getElementById('loginBtn');
+                        if (loginBtn) {
+                            loginBtn.textContent = 'Админ';
+                        }
+                        document.getElementById('adminPanel').classList.add('active');
+                        loadAdminRequests();
+                        loadAdminArchive();
+                    } else {
+                        alert('Неверный логин или пароль');
+                    }
+                } catch (error) {
+                    console.error('Ошибка входа админа:', error);
+                    alert('Ошибка соединения с сервером');
                 }
             });
-            
-            // Закрытие модальных окон
-            document.getElementById('closeAuth').addEventListener('click', function() {
+        }
+        
+        // Закрытие модальных окон
+        const closeAuthBtn = document.getElementById('closeAuth');
+        if (closeAuthBtn) {
+            closeAuthBtn.addEventListener('click', function() {
                 document.getElementById('authModal').classList.remove('active');
-                document.getElementById('loginError').style.display = 'none';
+                const loginError = document.getElementById('loginError');
+                if (loginError) {
+                    loginError.style.display = 'none';
+                }
             });
-            
-            document.getElementById('closeSuccess').addEventListener('click', function() {
+        }
+        
+        const closeSuccessBtn = document.getElementById('closeSuccess');
+        if (closeSuccessBtn) {
+            closeSuccessBtn.addEventListener('click', function() {
                 document.getElementById('successModal').classList.remove('active');
             });
-            
-            document.getElementById('closeAdminLogin').addEventListener('click', function() {
+        }
+        
+        const closeAdminLoginBtn = document.getElementById('closeAdminLogin');
+        if (closeAdminLoginBtn) {
+            closeAdminLoginBtn.addEventListener('click', function() {
                 document.getElementById('adminLoginModal').classList.remove('active');
             });
-            
-            document.getElementById('okSuccess').addEventListener('click', function() {
+        }
+        
+        const okSuccessBtn = document.getElementById('okSuccess');
+        if (okSuccessBtn) {
+            okSuccessBtn.addEventListener('click', function() {
                 document.getElementById('successModal').classList.remove('active');
             });
-            
-            // Закрытие модальных окон при клике вне их
-            window.addEventListener('click', function(e) {
-                const modals = document.querySelectorAll('.modal.active');
-                modals.forEach(modal => {
-                    if (e.target === modal) {
-                        modal.classList.remove('active');
-                        document.getElementById('loginError').style.display = 'none';
+        }
+        
+        // Закрытие модальных окон при клике вне их
+        window.addEventListener('click', function(e) {
+            const modals = document.querySelectorAll('.modal.active');
+            modals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    const loginError = document.getElementById('loginError');
+                    if (loginError) {
+                        loginError.style.display = 'none';
                     }
-                });
-            });
-            
-            // Плавная прокрутка к якорям
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#') return;
-                        
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    }
-                });
-            });
-        }
-
-        // Показать вкладку
-        function showTab(tabId) {
-            // Скрыть все вкладки
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Убрать активный класс со всех кнопок
-            document.querySelectorAll('.modal-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Показать выбранную вкладку
-            document.getElementById(tabId + 'Tab').classList.add('active');
-            
-            // Активировать соответствующую кнопку
-            document.querySelector(`.modal-tab[data-tab="${tabId}"]`).classList.add('active');
-            
-            // Очистить ошибку входа
-            document.getElementById('loginError').style.display = 'none';
-        }
-
-        // Валидация телефона
-        function validatePhone(phone) {
-            const phoneRegex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-            return phoneRegex.test(phone);
-        }
-
-        // Валидация email
-        function validateEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        // Обновление интерфейса для залогиненного пользователя
-        function updateUIForLoggedInUser() {
-            if (currentUser) {
-                // Приветствие убрано по требованию
-                document.getElementById('loginBtn').textContent = 'Мои заявки';
-            } else {
-                document.getElementById('loginBtn').textContent = 'Войти / Регистрация';
-            }
-        }
-
-        // Выход из аккаунта
-        function logoutUser() {
-            if (confirm('Вы уверены, что хотите выйти из аккаунта?')) {
-                DB.removeUserIP(getUserIP());
-                currentUser = null;
-                updateUIForLoggedInUser();
-                updateRequestFormVisibility();
-                selectedTime = null;
-                updateSelectedDateTimeDisplay();
-                
-                // Если открыт раздел "Мои заявки" - вернуться на главную
-                if (document.getElementById('my-requests').style.display !== 'none') {
-                    hideMyRequests();
-                }
-            }
-        }
-
-        // Показать заявки пользователя
-        function showMyRequests() {
-            // Скрыть другие разделы
-            document.querySelectorAll('section').forEach(section => {
-                if (section.id !== 'my-requests') {
-                    section.style.display = 'none';
                 }
             });
-            
-            // Показать раздел с заявками
-            document.getElementById('my-requests').style.display = 'block';
-            
-            // Загрузить заявки пользователя
-            loadUserRequests();
-            
-            // Прокрутить к верху страницы
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Скрыть раздел с заявками и показать все остальное
-        function hideMyRequests() {
-            // Показать все разделы
-            document.querySelectorAll('section').forEach(section => {
-                section.style.display = 'block';
+        });
+        
+        // Закрытие модальных окон при нажатии Escape
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                const loginError = document.getElementById('loginError');
+                if (loginError) {
+                    loginError.style.display = 'none';
+                }
+            }
+        });
+        
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             });
-            
-            // Скрыть раздел с заявками
-            document.getElementById('my-requests').style.display = 'none';
-            
-            // Прокрутить к началу страницы
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        });
+    }
 
-        // Загрузка заявок пользователя
-        function loadUserRequests() {
-            if (!currentUser) return;
+    // Показать вкладку
+    function showTab(tabId) {
+        // Скрыть все вкладки
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Убрать активный класс со всех кнопок
+        document.querySelectorAll('.modal-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Показать выбранную вкладку
+        const selectedTab = document.getElementById(tabId + 'Tab');
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+        
+        // Активировать соответствующую кнопку
+        const selectedTabBtn = document.querySelector(`.modal-tab[data-tab="${tabId}"]`);
+        if (selectedTabBtn) {
+            selectedTabBtn.classList.add('active');
+        }
+        
+        // Очистить ошибку входа
+        const loginError = document.getElementById('loginError');
+        if (loginError) {
+            loginError.style.display = 'none';
+        }
+    }
+
+    // Получение IP пользователя (упрощенная версия)
+    function getUserIP() {
+        let userIdentifier = localStorage.getItem('userIdentifier');
+        if (!userIdentifier) {
+            userIdentifier = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('userIdentifier', userIdentifier);
+        }
+        return userIdentifier;
+    }
+
+    // Валидация телефона
+    function validatePhone(phone) {
+        // Убираем все символы, кроме цифр и +
+        const cleaned = phone.replace(/[^\d+]/g, '');
+        
+        // Проверяем российские номера
+        const phoneRegex = /^(\+7|7|8)\d{10}$/;
+        
+        if (!phoneRegex.test(cleaned)) {
+            return false;
+        }
+        
+        // Дополнительная проверка: номер должен начинаться с 9 после кода страны/оператора
+        const digitsOnly = cleaned.replace(/\D/g, '');
+        if (digitsOnly.length === 11) {
+            return digitsOnly.charAt(1) === '9';
+        }
+        
+        return false;
+    }
+
+    // Валидация email
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // Проверка, может ли пользователь создать заявку
+    async function checkCanCreateRequest() {
+        if (!currentUser) return false;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/requests/user/${currentUser.username}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    // Проверяем, есть ли активные заявки
+                    const activeRequests = data.requests.filter(req => 
+                        req.status === 'new' || req.status === 'in_progress'
+                    );
+                    return activeRequests.length === 0;
+                }
+            }
+            return true;
+        } catch (error) {
+            console.error('Ошибка проверки заявок:', error);
+            return true;
+        }
+    }
+
+    // Обновление интерфейса для залогиненного пользователя
+    function updateUIForLoggedInUser() {
+        const loginBtn = document.getElementById('loginBtn');
+        if (!loginBtn) return;
+        
+        if (currentUser) {
+            loginBtn.textContent = 'Мои заявки';
+        } else {
+            loginBtn.textContent = 'Войти / Регистрация';
+        }
+    }
+
+    // Выход из аккаунта
+    function logoutUser() {
+        if (confirm('Вы уверены, что хотите выйти из аккаунта?')) {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateUIForLoggedInUser();
+            updateRequestFormVisibility();
+            selectedTime = null;
+            updateSelectedDateTimeDisplay();
             
-            const requests = DB.getUserRequests(currentUser.username);
+            // Если открыт раздел "Мои заявки" - вернуться на главную
+            if (document.getElementById('my-requests').style.display !== 'none') {
+                hideMyRequests();
+            }
+        }
+    }
+
+    // Выход из админ панели
+    function logoutAdmin() {
+        isAdmin = false;
+        adminToken = null;
+        localStorage.removeItem('adminToken');
+        const loginBtn = document.getElementById('loginBtn');
+        if (loginBtn) {
+            loginBtn.textContent = 'Войти / Регистрация';
+        }
+        document.getElementById('adminPanel').classList.remove('active');
+    }
+
+    // Показать заявки пользователя
+    function showMyRequests() {
+        // Скрыть другие разделы
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id !== 'my-requests') {
+                section.style.display = 'none';
+            }
+        });
+        
+        // Показать раздел с заявками
+        const myRequests = document.getElementById('my-requests');
+        if (myRequests) {
+            myRequests.style.display = 'block';
+        }
+        
+        // Загрузить заявки пользователя
+        loadUserRequests();
+        
+        // Прокрутить к верху страницы
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Скрыть раздел с заявками
+    function hideMyRequests() {
+        // Показать все разделы
+        document.querySelectorAll('section').forEach(section => {
+            section.style.display = 'block';
+        });
+        
+        // Скрыть раздел с заявками
+        const myRequests = document.getElementById('my-requests');
+        if (myRequests) {
+            myRequests.style.display = 'none';
+        }
+        
+        // Прокрутить к началу страницы
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Загрузка заявок пользователя
+    async function loadUserRequests() {
+        if (!currentUser) return;
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/requests/user/${currentUser.username}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
             const requestsList = document.getElementById('requestsList');
+            if (!requestsList) return;
             
-            if (requests.length === 0) {
+            if (!data.success || data.requests.length === 0) {
                 requestsList.innerHTML = '<p style="text-align:center; font-size:1.2rem; color: var(--light);">У вас еще нет заявок</p>';
                 return;
             }
             
-            // Сортируем заявки по дате (новые сверху)
-            requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            
             let html = '';
-            requests.forEach(request => {
+            data.requests.forEach(request => {
                 const statusText = {
                     'new': 'Новая',
                     'in_progress': 'В работе',
@@ -3009,180 +3100,279 @@
                     'cancelled': 'status-cancelled'
                 }[request.status] || 'status-new';
                 
-                const date = new Date(request.createdAt).toLocaleString('ru-RU');
-                const appointmentDateTime = request.appointmentDate ? 
-                    `${request.appointmentDate} в ${request.appointmentTime}` : 'Не указано';
+                const date = new Date(request.created_at).toLocaleString('ru-RU');
+                const appointmentDateTime = request.appointment_date ? 
+                    `${request.appointment_date} в ${request.appointment_time}` : 'Не указано';
                 
                 html += `
                 <div class="request-card">
                     <div class="request-status ${statusClass}">${statusText}</div>
                     <p><strong>Дата создания:</strong> ${date}</p>
                     <p><strong>Запись на:</strong> ${appointmentDateTime}</p>
-                    <p><strong>ФИО:</strong> ${request.fullName}</p>
+                    <p><strong>ФИО:</strong> ${request.full_name}</p>
                     <p><strong>Телефон:</strong> ${request.phone}</p>
                     <p><strong>Адрес:</strong> ${request.address}</p>
                     <p><strong>Проблема:</strong> ${request.problem.substring(0, 200)}${request.problem.length > 200 ? '...' : ''}</p>
                     ${request.status === 'new' || request.status === 'in_progress' ? 
-                      `<button onclick="cancelRequest('${request.id}', '${request.appointmentDate}', '${request.appointmentTime}')" class="btn-main" style="margin-top:15px; background:#ff4757;">Отменить заявку</button>` : 
+                      `<button onclick="cancelRequest('${request.id}')" class="btn-main" style="margin-top:15px; background:#ff4757;">Отменить заявку</button>` : 
                       ''}
                 </div>
                 `;
             });
             
             requestsList.innerHTML = html;
+        } catch (error) {
+            console.error('Ошибка загрузки заявок:', error);
+            const requestsList = document.getElementById('requestsList');
+            if (requestsList) {
+                requestsList.innerHTML = 
+                    '<p style="text-align:center; font-size:1.2rem; color: #ff4757;">Ошибка загрузки заявок</p>';
+            }
         }
+    }
 
-        // Отмена заявки (синхронизация с админом)
-        window.cancelRequest = function(requestId, appointmentDate, appointmentTime) {
-            if (confirm('Вы уверены, что хотите отменить эту заявку?')) {
-                if (DB.updateRequest(requestId, { status: 'cancelled' })) {
-                    // Освобождаем слот
-                    if (appointmentDate && appointmentTime) {
-                        DB.freeSlot(appointmentDate, appointmentTime);
-                    }
-                    
+    // Отмена заявки
+    window.cancelRequest = async function(requestId) {
+        if (confirm('Вы уверены, что хотите отменить эту заявку?')) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/requests/${requestId}/status`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'cancelled' })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.success) {
                     alert('Заявка отменена');
                     loadUserRequests();
-                    
-                    // Обновление временных слотов, если мы на странице с формой
-                    if (selectedDate && currentUser) {
-                        updateTimeSlots();
-                    }
+                    await loadBookedSlots();
                     
                     // Обновление админ панели, если она открыта
                     if (document.getElementById('adminPanel').classList.contains('active')) {
                         loadAdminRequests();
                         loadAdminArchive();
                     }
+                } else {
+                    alert('Ошибка отмены заявки');
                 }
+            } catch (error) {
+                console.error('Ошибка отмены заявки:', error);
+                alert('Ошибка соединения с сервером');
             }
-        };
+        }
+    };
 
-        // Загрузка активных заявок для админ панели
-        function loadAdminRequests(filterDate = null) {
-            let requests = DB.getActiveRequests();
-            const tableBody = document.getElementById('adminRequestsTable');
-            
-            // Фильтрация по дате, если указана
+    // Загрузка активных заявок для админ панели
+    async function loadAdminRequests(filterDate = null) {
+        try {
+            let url = `${API_BASE_URL}/requests/active`;
             if (filterDate) {
-                requests = requests.filter(req => req.appointmentDate === filterDate);
+                url += `?date=${filterDate}`;
             }
             
-            // Сортируем заявки по дате (новые сверху)
-            requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            const tableBody = document.getElementById('adminRequestsTable');
+            if (!tableBody) return;
+            
+            if (!data.success || data.requests.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Нет активных заявок</td></tr>`;
+                return;
+            }
             
             let html = '';
-            if (requests.length === 0) {
-                html = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Нет активных заявок</td></tr>`;
-            } else {
-                requests.forEach(request => {
-                    const statusText = {
-                        'new': 'Новая',
-                        'in_progress': 'В работе'
-                    }[request.status] || request.status;
-                    
-                    const date = new Date(request.createdAt).toLocaleString('ru-RU');
-                    
-                    html += `
-                    <tr>
-                        <td>${request.id.substring(0, 8)}</td>
-                        <td>${request.fullName}</td>
-                        <td>${request.phone}</td>
-                        <td>${request.userEmail || 'Не указан'}</td>
-                        <td>${request.appointmentDate || 'Не указана'} ${request.appointmentTime || ''}</td>
-                        <td>${request.address}</td>
-                        <td>${statusText}</td>
-                        <td>
-                            ${request.status === 'new' || request.status === 'in_progress' ? 
-                              `<button onclick="adminCancelRequest('${request.id}', '${request.appointmentDate}', '${request.appointmentTime}', '${request.username}')" style="padding:5px 10px; background:#ff4757; color:white; border:none; border-radius:4px; cursor:pointer;">Отменить запись</button>` : 
-                              ''}
-                            ${request.status === 'new' ? 
-                              `<button onclick="adminStartRequest('${request.id}')" style="padding:5px 10px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">В работу</button>` : 
-                              ''}
-                            ${request.status === 'in_progress' ? 
-                              `<button onclick="adminCompleteRequest('${request.id}')" style="padding:5px 10px; background:#2ed573; color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">Завершить</button>` : 
-                              ''}
-                        </td>
-                    </tr>
-                    `;
-                });
-            }
-            
-            tableBody.innerHTML = html;
-        }
-
-        // Загрузка архивных заявок для админ панели
-        function loadAdminArchive() {
-            const requests = DB.getArchiveRequests();
-            const tableBody = document.getElementById('adminArchiveTable');
-            
-            // Сортируем заявки по дате (новые сверху)
-            requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            
-            let html = '';
-            if (requests.length === 0) {
-                html = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Архив пуст</td></tr>`;
-            } else {
-                requests.forEach(request => {
-                    const statusText = {
-                        'completed': 'Завершена',
-                        'cancelled': 'Отменена'
-                    }[request.status] || request.status;
-                    
-                    const date = new Date(request.createdAt).toLocaleString('ru-RU');
-                    const appointmentDateTime = request.appointmentDate ? 
-                        `${request.appointmentDate} ${request.appointmentTime || ''}` : 'Не указана';
-                    
-                    html += `
-                    <tr>
-                        <td>${request.id.substring(0, 8)}</td>
-                        <td>${request.fullName}</td>
-                        <td>${request.phone}</td>
-                        <td>${request.userEmail || 'Не указан'}</td>
-                        <td>${appointmentDateTime}</td>
-                        <td>${request.address}</td>
-                        <td>${statusText}</td>
-                        <td>${date}</td>
-                    </tr>
-                    `;
-                });
-            }
-            
-            tableBody.innerHTML = html;
-        }
-
-        // Действия админа с заявками (с синхронизацией с клиентом)
-        window.adminCancelRequest = function(requestId, appointmentDate, appointmentTime, username) {
-            if (confirm('Отменить эту заявку? Клиент будет уведомлен об отмене.')) {
-                DB.updateRequest(requestId, { status: 'cancelled' });
+            data.requests.forEach(request => {
+                const statusText = {
+                    'new': 'Новая',
+                    'in_progress': 'В работе'
+                }[request.status] || request.status;
                 
-                // Освобождаем слот
-                if (appointmentDate && appointmentTime) {
-                    DB.freeSlot(appointmentDate, appointmentTime);
+                const date = new Date(request.created_at).toLocaleString('ru-RU');
+                
+                html += `
+                <tr>
+                    <td>${request.id}</td>
+                    <td>${request.full_name}</td>
+                    <td>${request.phone}</td>
+                    <td>${request.user_email || 'Не указан'}</td>
+                    <td>${request.appointment_date} ${request.appointment_time}</td>
+                    <td>${request.address}</td>
+                    <td>${statusText}</td>
+                    <td>
+                        ${request.status === 'new' || request.status === 'in_progress' ? 
+                          `<button onclick="adminCancelRequest('${request.id}')" style="padding:5px 10px; background:#ff4757; color:white; border:none; border-radius:4px; cursor:pointer;">Отменить запись</button>` : 
+                          ''}
+                        ${request.status === 'new' ? 
+                          `<button onclick="adminStartRequest('${request.id}')" style="padding:5px 10px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">В работу</button>` : 
+                          ''}
+                        ${request.status === 'in_progress' ? 
+                          `<button onclick="adminCompleteRequest('${request.id}')" style="padding:5px 10px; background:#2ed573; color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">Завершить</button>` : 
+                          ''}
+                    </td>
+                </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = html;
+        } catch (error) {
+            console.error('Ошибка загрузки активных заявок:', error);
+            const tableBody = document.getElementById('adminRequestsTable');
+            if (tableBody) {
+                tableBody.innerHTML = 
+                    `<tr><td colspan="8" style="text-align:center; padding: 30px; color: #ff4757;">Ошибка загрузки</td></tr>`;
+            }
+        }
+    }
+
+    // Загрузка архивных заявок для админ панели
+    async function loadAdminArchive() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/requests/archive`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            const tableBody = document.getElementById('adminArchiveTable');
+            if (!tableBody) return;
+            
+            if (!data.success || data.requests.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Архив пуст</td></tr>`;
+                return;
+            }
+            
+            let html = '';
+            data.requests.forEach(request => {
+                const statusText = {
+                    'completed': 'Завершена',
+                    'cancelled': 'Отменена'
+                }[request.status] || request.status;
+                
+                const date = new Date(request.created_at).toLocaleString('ru-RU');
+                const appointmentDateTime = request.appointment_date ? 
+                    `${request.appointment_date} ${request.appointment_time || ''}` : 'Не указана';
+                
+                html += `
+                <tr>
+                    <td>${request.id}</td>
+                    <td>${request.full_name}</td>
+                    <td>${request.phone}</td>
+                    <td>${request.user_email || 'Не указан'}</td>
+                    <td>${appointmentDateTime}</td>
+                    <td>${request.address}</td>
+                    <td>${statusText}</td>
+                    <td>${date}</td>
+                </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = html;
+        } catch (error) {
+            console.error('Ошибка загрузки архивных заявок:', error);
+            const tableBody = document.getElementById('adminArchiveTable');
+            if (tableBody) {
+                tableBody.innerHTML = 
+                    `<tr><td colspan="8" style="text-align:center; padding: 30px; color: #ff4757;">Ошибка загрузки</td></tr>`;
+            }
+        }
+    }
+
+    // Действия админа с заявками
+    window.adminCancelRequest = async function(requestId) {
+        if (confirm('Отменить эту заявку? Клиент будет уведомлен об отмене.')) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/requests/${requestId}/status`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'cancelled' })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
+                const data = await response.json();
+                
+                if (data.success) {
+                    loadAdminRequests();
+                    loadAdminArchive();
+                    await loadBookedSlots();
+                    alert('Заявка отменена');
+                } else {
+                    alert('Ошибка отмены заявки');
+                }
+            } catch (error) {
+                console.error('Ошибка отмены заявки:', error);
+                alert('Ошибка соединения с сервером');
+            }
+        }
+    };
+
+    window.adminStartRequest = async function(requestId) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/requests/${requestId}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: 'in_progress' })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
                 loadAdminRequests();
                 loadAdminArchive();
-                updateTimeSlots();
-                
-                // Синхронизация: если пользователь сейчас в разделе "Мои заявки", обновляем его список
-                if (currentUser && currentUser.username === username && document.getElementById('my-requests').style.display !== 'none') {
-                    loadUserRequests();
-                }
+                alert('Заявка переведена в работу');
+            } else {
+                alert('Ошибка обновления статуса');
             }
-        };
+        } catch (error) {
+            console.error('Ошибка обновления статуса:', error);
+            alert('Ошибка соединения с сервером');
+        }
+    };
 
-        window.adminStartRequest = function(requestId) {
-            DB.updateRequest(requestId, { status: 'in_progress' });
-            loadAdminRequests();
-            loadAdminArchive();
-        };
-
-        window.adminCompleteRequest = function(requestId) {
-            DB.updateRequest(requestId, { status: 'completed' });
-            loadAdminRequests();
-            loadAdminArchive();
-        };
-    </script>
+    window.adminCompleteRequest = async function(requestId) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/requests/${requestId}/status`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: 'completed' })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                loadAdminRequests();
+                loadAdminArchive();
+                alert('Заявка завершена');
+            } else {
+                alert('Ошибка завершения заявки');
+            }
+        } catch (error) {
+            console.error('Ошибка завершения заявки:', error);
+            alert('Ошибка соединения с сервером');
+        }
+    };
+</script>   
+ 
 </body>
 </html>
