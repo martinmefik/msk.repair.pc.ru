@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Профессиональный ремонт компьютеров и ноутбуков в Москве. Выезд на дом и удаленная помощь. Быстро, качественно, с гарантией!">
     <title>MSK REPAIR PC | Ремонт компьютеров и ноутбуков в Москве</title>
+    <link rel="icon" href="https://postimg.cc/5QNPb6nv" type="image/x-icon">
+    <link rel="shortcut icon" href="https://postimg.cc/5QNPb6nv" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
@@ -13,6 +15,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         :root {
@@ -36,6 +39,7 @@
             line-height: 1.7;
             min-height: 100vh;
             padding-top: 70px;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Параллакс эффект */
@@ -106,6 +110,8 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             white-space: nowrap;
+            cursor: pointer;
+            min-height: 44px;
         }
 
         .logo i {
@@ -137,6 +143,10 @@
             white-space: nowrap;
             padding: 5px 10px;
             border-radius: 4px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         nav ul li a:hover {
@@ -151,7 +161,9 @@
         }
 
         .btn-main {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, var(--secondary), #ff2e43);
             color: white;
             padding: 14px 35px;
@@ -164,6 +176,7 @@
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
             border: 2px solid transparent;
+            min-height: 44px;
         }
 
         .btn-main:hover {
@@ -557,7 +570,9 @@
         .experience {
             background: linear-gradient(135deg, var(--accent), #ff6b81);
             color: white;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 15px 25px;
             border-radius: 10px;
             font-weight: 700;
@@ -570,6 +585,7 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            min-height: 44px;
         }
 
         .experience:hover {
@@ -693,7 +709,7 @@
 
         .checkbox-group {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 10px;
         }
 
@@ -709,6 +725,7 @@
             border-radius: 4px;
             position: relative;
             cursor: pointer;
+            margin-top: 3px;
         }
 
         .checkbox-group input:checked {
@@ -786,7 +803,7 @@
         }
 
         .time-slot {
-            padding: 12px 5px;
+            padding: 15px 5px;
             text-align: center;
             background-color: var(--input-bg);
             border: 2px solid rgba(255, 255, 255, 0.1);
@@ -796,6 +813,10 @@
             font-weight: 500;
             color: var(--light);
             font-size: 0.95rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .time-slot:hover {
@@ -832,13 +853,17 @@
 
         /* Кнопки в таблице */
         .btn-small {
-            padding: 6px 12px;
+            padding: 8px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.85rem;
             margin: 2px;
             transition: all 0.3s;
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-small:hover {
@@ -902,6 +927,15 @@
         }
 
         /* Окно с ценами */
+        #priceModal .modal-content {
+            scrollbar-width: none;
+            max-width: 800px;
+        }
+
+        #priceModal .modal-content::-webkit-scrollbar {
+            display: none;
+        }
+
         .prices-container {
             background-color: var(--card-bg);
             padding: 40px;
@@ -1258,7 +1292,7 @@
             font-size: 0.9rem;
         }
 
-        /* Адаптивность */
+        /* Адаптивность для десктопа */
         @media (max-width: 1200px) {
             .header-container {
                 flex-wrap: wrap;
@@ -1277,84 +1311,274 @@
             }
         }
 
+        /* Для планшетов (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .reasons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .master {
+                flex-direction: column;
+            }
+            
+            .master-info, .master-photo {
+                width: 100%;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .review {
+                padding: 25px;
+            }
+        }
+
+        /* Для мобильных устройств (до 768px) */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 12px;
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
+            
             nav ul {
-                margin-top: 12px;
+                margin-top: 10px;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 8px;
+                width: 100%;
             }
+            
             nav ul li {
                 margin: 0;
+                flex: 1 0 auto;
+                text-align: center;
             }
+            
+            nav ul li a {
+                padding: 8px 5px;
+                font-size: 0.9rem;
+                display: block;
+            }
+            
+            .user-section {
+                margin-top: 10px;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: calc(100vh - 70px);
+                padding: 40px 20px;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
+            
             .hero p {
                 font-size: 1.1rem;
             }
+            
             section {
                 padding: 60px 15px;
             }
+            
             .form-container {
                 padding: 25px 15px;
             }
+            
             .modal-content {
                 padding: 25px 15px;
             }
+            
             .admin-tabs {
                 flex-direction: column;
             }
+            
             .admin-tab {
                 text-align: center;
             }
+            
             .master-section {
                 padding: 25px 15px;
             }
+            
             .master-highlights {
                 grid-template-columns: 1fr;
             }
+            
             body {
                 padding-top: 110px;
             }
+            
             .time-slots {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
             .work-hours-compact {
                 flex-direction: column;
             }
+            
             .work-hours-item-compact {
                 min-width: 100%;
             }
+            
+            .form-control {
+                font-size: 16px;
+                padding: 12px;
+            }
+            
+            textarea.form-control {
+                min-height: 120px;
+            }
+            
+            .datetime-selection {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .checkbox-group {
+                align-items: flex-start;
+            }
+            
+            .admin-table-container {
+                overflow-x: auto;
+                margin: 0 -10px;
+                padding: 10px;
+            }
+            
+            .admin-table {
+                font-size: 0.8rem;
+            }
+            
+            .admin-table th, 
+            .admin-table td {
+                padding: 8px 6px;
+            }
+            
+            .admin-tabs {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .admin-tab {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+                white-space: nowrap;
+            }
+            
+            .review {
+                padding: 20px 15px;
+            }
+            
+            .reason {
+                padding: 20px;
+            }
         }
 
+        /* Для мобильных устройств в горизонтальной ориентации */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: calc(100vh - 70px);
+                padding: 40px 20px;
+            }
+            
+            .work-hours {
+                margin: 10px auto;
+                max-width: 90%;
+            }
+        }
+
+        /* Для очень маленьких экранов */
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.5rem;
             }
+            
+            .logo i {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
             .section-title {
                 font-size: 1.8rem;
             }
-            .reason {
-                padding: 20px 15px;
-            }
-            .work-hours {
-                padding: 10px 8px;
-            }
-            .work-hours h3 {
-                font-size: 1rem;
-            }
+            
             .time-slots {
                 grid-template-columns: 1fr;
             }
+            
             .btn-main {
                 padding: 12px 25px;
                 font-size: 1rem;
+            }
+            
+            .reason {
+                padding: 20px 15px;
+            }
+            
+            .work-hours {
+                padding: 10px 8px;
+            }
+            
+            .work-hours h3 {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .btn-main {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            nav ul li a {
+                font-size: 0.85rem;
+                padding: 6px 4px;
             }
         }
     </style>
@@ -1447,7 +1671,7 @@
                     <div class="reason-details">
                         <ul>
                             <li>Срочный выезд в течение 1 часа</li>
-                            <li>Диагностика за 15 минут бесплатно</li>
+                            <li>Диагностика оборудования - 250 ₽</li>
                             <li>90% ремонтов выполняется на месте</li>
                             <li>Запчасти только под заказ по факту</li>
                             <li>Возможность ремонта при клиенте</li>
@@ -1501,7 +1725,7 @@
                     <div class="reason-details">
                         <ul>
                             <li>Фиксированная цена до начала работ</li>
-                            <li>Бесплатная диагностика при ремонте</li>
+                            <li>Диагностика при ремонте - 250 ₽</li>
                             <li>Скидки постоянным клиентам</li>
                             <li>Возврат денег при невозможности ремонта</li>
                         </ul>
@@ -1747,7 +1971,7 @@
                     </div>
                     <div class="price-item">
                         <span>Комплексная диагностика (при ремонте)</span>
-                        <span>Бесплатно</span>
+                        <span>250 ₽</span>
                     </div>
                 </div>
                 
@@ -1781,10 +2005,6 @@
                 
                 <div class="price-category">
                     <h3>Аппаратный ремонт ноутбуков</h3>
-                    <div class="price-item">
-                        <span>Замена матрицы экрана</span>
-                        <span>от 1500 ₽</span>
-                    </div>
                     <div class="price-item">
                         <span>Замена клавиатуры</span>
                         <span>от 1000 ₽</span>
@@ -1883,15 +2103,25 @@
                     </div>
                 </div>
                 
-                <div class="work-hours" style="margin-top: 30px;">
-                    <p class="warning-text">
-                        <i class="fas fa-info-circle"></i> Окончательная стоимость определяется после диагностики. 
-                        Цены на запчасти обсуждаются отдельно.
+                <div class="work-hours" style="margin-top: 30px; padding: 20px;">
+                    <h3 style="color: var(--secondary); margin-bottom: 15px;">
+                        <i class="fas fa-info-circle"></i> Дополнительная информация
+                    </h3>
+                    <p style="color: var(--light); margin-bottom: 10px;">
+                        Для уточнения точной стоимости услуг и получения консультации:
+                    </p>
+                    <ul style="color: var(--light); padding-left: 20px; margin-bottom: 15px;">
+                        <li>Оставьте заявку через форму на сайте</li>
+                        <li>Напишите в Telegram: <strong>@Official_partner_of_Skoda</strong></li>
+                        <li>Позвоните по телефону: <strong>+7 (977) 477-05-87</strong></li>
+                    </ul>
+                    <p class="warning-text" style="margin-bottom: 0;">
+                        <i class="fas fa-exclamation-triangle"></i> Окончательная стоимость определяется после диагностики
                     </p>
                 </div>
             </div>
             
-            <button id="backToMain" class="btn-main" style="width:100%; margin-top:20px;">Вернуться на главную</button>
+            <button id="backToMain" class="btn-main" style="width:100%; margin-top:20px; position:sticky; bottom:0; z-index:10;">Вернуться на главную</button>
         </div>
     </div>
 
@@ -1920,7 +2150,7 @@
                                 <p style="color: var(--light);">Всего заявок: <span id="totalRequests">0</span></p>
                             </div>
                             <div>
-                                <button id="refreshAdminBtn" class="btn-main" style="padding: 10px 20px;">Обновить список</button>
+                                <button id="refreshAdminBtn" class="btn-main" style="padding: 10px 20px; min-height: 44px;">Обновить список</button>
                             </div>
                         </div>
                     </div>
@@ -1984,13 +2214,13 @@
                         <p style="color: var(--light); margin-bottom: 15px;">Вы можете экспортировать все заявки для резервного копирования</p>
                         
                         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                            <button id="exportJsonBtn" class="btn-main" style="padding: 10px 20px;">
+                            <button id="exportJsonBtn" class="btn-main" style="padding: 10px 20px; min-height: 44px;">
                                 <i class="fas fa-download" aria-hidden="true"></i> Экспорт в JSON
                             </button>
-                            <button id="exportCsvBtn" class="btn-main" style="background: #2ed573; padding: 10px 20px;">
+                            <button id="exportCsvBtn" class="btn-main" style="background: #2ed573; padding: 10px 20px; min-height: 44px;">
                                 <i class="fas fa-file-csv" aria-hidden="true"></i> Экспорт в CSV
                             </button>
-                            <button id="clearAllBtn" class="btn-main" style="background: #ff4757; padding: 10px 20px;">
+                            <button id="clearAllBtn" class="btn-main" style="background: #ff4757; padding: 10px 20px; min-height: 44px;">
                                 <i class="fas fa-trash" aria-hidden="true"></i> Очистить все
                             </button>
                         </div>
@@ -2020,6 +2250,8 @@
     let adminAccessEnabled = false;
     let selectedDate = null;
     let flatpickrInstance = null;
+    let adminClickCount = 0;
+    let clickTimeout;
 
     // Инициализация при загрузке страницы
     document.addEventListener('DOMContentLoaded', function() {
@@ -2170,7 +2402,7 @@
                 // Показываем успешное сообщение
                 showSuccessMessage(requestData);
                 
-                // Отправляем уведомление в Telegram
+                // Отправляем уведомление в Telegram с кнопками управления
                 sendTelegramNotification(requestData);
                 
                 // Очищаем форму
@@ -2305,18 +2537,21 @@
 💻 Устройство: ${requestData.device}
 📅 Дата записи: ${requestData.appointmentDate}
 📝 Проблема: ${requestData.problem.substring(0, 300)}
-📅 Дата создания: ${requestData.date}
+📅 Дата создания: ${new Date().toLocaleDateString('ru-RU')}
 🔘 Статус: Новая`;
 
         // Создаем inline клавиатуру с кнопками управления
         const keyboard = {
             inline_keyboard: [
                 [
-                    { text: "✅ В работу", callback_data: `status_in_progress_${requestData.id}` },
+                    { text: "🔄 В работу", callback_data: `status_in_progress_${requestData.id}` },
                     { text: "📞 Позвонить", url: `tel:${requestData.phone}` }
                 ],
                 [
-                    { text: "✅ Завершить", callback_data: `status_completed_${requestData.id}` },
+                    { text: "📅 Перенести", callback_data: `status_reschedule_${requestData.id}` },
+                    { text: "✅ Завершить", callback_data: `status_completed_${requestData.id}` }
+                ],
+                [
                     { text: "❌ Отменить", callback_data: `status_cancelled_${requestData.id}` }
                 ]
             ]
@@ -2345,7 +2580,7 @@
             }
         })
         .catch(error => {
-            console.error('Ошибка сети при отправки в Telegram:', error);
+            console.error('Ошибка сети при отправке в Telegram:', error);
         });
     }
 
@@ -2372,6 +2607,7 @@
             
             const statusText = newStatus === 'in_progress' ? '🔄 В работе' : 
                              newStatus === 'completed' ? '✅ Завершена' : 
+                             newStatus === 'reschedule' ? '📅 Перенесена' :
                              '❌ Отменена';
             
             const message = `📱 ОБНОВЛЕНИЕ СТАТУСА ЗАЯВКИ
@@ -2406,9 +2642,6 @@
 
     // Настройка админ доступа (скрытый доступ по тройному клику на логотип)
     function setupAdminAccess() {
-        let adminClickCount = 0;
-        let clickTimeout;
-        
         const logo = document.querySelector('.logo');
         if (logo) {
             logo.addEventListener('click', function(e) {
@@ -2429,6 +2662,13 @@
                         alert('Неверный пароль');
                     }
                     adminClickCount = 0;
+                } else if (adminClickCount < 2) {
+                    // Плавный скролл наверх при обычном клике
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 }
             });
         }
@@ -2603,6 +2843,8 @@
                       ''}
                     <button onclick="changeRequestStatus('${request.id}', 'cancelled')" 
                             class="btn-small" style="background:#ff4757;">Отменить</button>
+                    <button onclick="changeRequestStatus('${request.id}', 'reschedule')" 
+                            class="btn-small" style="background:#ffa502;">Перенести</button>
                 </td>
             </tr>
             `;
@@ -2628,7 +2870,7 @@
         
         // Фильтруем завершенные и отмененные заявки
         const archiveRequests = requests.filter(req => 
-            req.status === 'completed' || req.status === 'cancelled'
+            req.status === 'completed' || req.status === 'cancelled' || req.status === 'reschedule'
         );
         
         if (archiveRequests.length === 0) {
@@ -2646,8 +2888,12 @@
         
         let html = '';
         archiveRequests.forEach(request => {
-            const statusText = request.status === 'completed' ? 'Завершена' : 'Отменена';
-            const statusClass = request.status === 'completed' ? 'status-completed' : 'status-cancelled';
+            const statusText = request.status === 'completed' ? 'Завершена' : 
+                             request.status === 'cancelled' ? 'Отменена' : 
+                             'Перенесена';
+            const statusClass = request.status === 'completed' ? 'status-completed' : 
+                              request.status === 'cancelled' ? 'status-cancelled' : 
+                              'status-in-progress';
             
             // Обрезаем длинную проблему для таблицы
             const shortProblem = request.problem.length > 80 
@@ -2691,6 +2937,7 @@
             alert(`Статус заявки изменен на: ${
                 newStatus === 'completed' ? 'Завершена' : 
                 newStatus === 'cancelled' ? 'Отменена' : 
+                newStatus === 'reschedule' ? 'Перенесена' : 
                 'В работе'
             }`);
         }
@@ -2702,6 +2949,7 @@
         
         const statusText = status === 'completed' ? '✅ ЗАВЕРШЕНА' : 
                          status === 'cancelled' ? '❌ ОТМЕНЕНА' : 
+                         status === 'reschedule' ? '📅 ПЕРЕНЕСЕНА' :
                          '🔄 В РАБОТЕ';
         
         const message = `${statusText} - ЗАЯВКА MSK REPAIR PC
@@ -2934,6 +3182,61 @@
         const cleaned = phone.replace(/[^\d+]/g, '');
         const phoneRegex = /^(\+7|7|8)\d{10}$/;
         return phoneRegex.test(cleaned);
+    }
+
+    // Функция для обработки callback от Telegram бота (пример для серверной части)
+    function handleTelegramCallback(callbackData) {
+        // Пример структуры callback_data: "status_in_progress_MSK-12345678"
+        const parts = callbackData.split('_');
+        const action = parts[0]; // "status"
+        const status = parts[1]; // "in_progress"
+        const requestId = parts.slice(2).join('_'); // "MSK-12345678"
+        
+        // Обновляем статус в локальном хранилище
+        let requests = loadRequests();
+        const requestIndex = requests.findIndex(r => r.id === requestId);
+        
+        if (requestIndex !== -1) {
+            requests[requestIndex].status = status;
+            localStorage.setItem('mskrepair_requests', JSON.stringify(requests));
+            
+            // Обновляем интерфейс, если админ панель открыта
+            if (document.getElementById('adminPanel').classList.contains('active')) {
+                updateAdminPanel();
+                updateArchivePanel();
+            }
+            
+            // Отправляем ответное уведомление в Telegram
+            sendStatusUpdateToTelegram(requests[requestIndex], status);
+            
+            return true;
+        }
+        
+        return false;
+    }
+
+    // Функция для отправки обновления статуса в Telegram
+    function sendStatusUpdateToTelegram(requestData, newStatus) {
+        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+        
+        const statusText = newStatus === 'in_progress' ? 'в работу' :
+                         newStatus === 'completed' ? 'завершена' :
+                         newStatus === 'cancelled' ? 'отменена' :
+                         newStatus === 'reschedule' ? 'перенесена' : 'обновлена';
+        
+        const message = `Статус заявки ${requestData.id} изменен на: ${statusText}`;
+        
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        }).catch(error => console.error('Ошибка отправки обновления статуса:', error));
     }
 </script>
 </body>
