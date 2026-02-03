@@ -2543,17 +2543,13 @@
             // Сохраняем заявку
             if (saveRequest(requestData)) {
                 // ОТПРАВЛЯЕМ В TELEGRAM ПЕРВЫМ ДЕЛОМ
-                console.log('Начинаем отправку заявки в Telegram...');
-                const telegramSent = sendTelegramNotification(requestData);
+                console.log('🔄 Начинаем отправку заявки в Telegram...');
                 
-                if (telegramSent) {
-                    console.log('✅ Заявка отправлена в Telegram');
-                } else {
-                    console.warn('⚠️ Заявка сохранена, но не отправлена в Telegram');
-                }
-                
-                // Показываем успешное сообщение
+                // Показываем уведомление пользователю
                 showSuccessMessage(requestData);
+                
+                // Отправляем в Telegram (не дожидаемся ответа)
+                sendTelegramNotification(requestData);
                 
                 // Очищаем форму
                 form.reset();
@@ -2622,7 +2618,7 @@
             }
             
             localStorage.setItem('mskrepair_requests', JSON.stringify(requests));
-            console.log('Заявка сохранена в LocalStorage:', requestData);
+            console.log('✅ Заявка сохранена в LocalStorage:', requestData);
             
             // Обновляем админ панель, если она открыта
             if (document.getElementById('adminPanel').classList.contains('active')) {
@@ -2631,7 +2627,7 @@
             
             return true;
         } catch (error) {
-            console.error('Ошибка сохранения заявки:', error);
+            console.error('❌ Ошибка сохранения заявки:', error);
             return false;
         }
     }
@@ -2674,17 +2670,15 @@
         modal.classList.add('active');
     }
 
-    // Основная функция отправки уведомления в Telegram
+    // ОСНОВНАЯ ФУНКЦИЯ ОТПРАВКИ В TELEGRAM С ИСПОЛЬЗОВАНИЕМ ПРОКСИ
     function sendTelegramNotification(requestData) {
         if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
             console.error('❌ Telegram бот не настроен. Проверьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID');
-            showTelegramStatus('Telegram бот не настроен. Проверьте настройки в админ панели.', 'error');
             return false;
         }
         
         console.log('🔄 Отправка заявки в Telegram...');
         console.log('Chat ID:', TELEGRAM_CHAT_ID);
-        console.log('Данные заявки:', requestData);
         
         // Форматируем сообщение
         const message = `📱 *НОВАЯ ЗАЯВКА MSK REPAIR PC* 🚀
@@ -2699,81 +2693,89 @@
 📅 *Дата создания:* ${new Date().toLocaleDateString('ru-RU')}
 🔘 *Статус:* Новая ⏳`;
 
-        // Создаем inline клавиатуру с кнопками управления
-        const keyboard = {
-            inline_keyboard: [
-                [
-                    { text: "🔄 В работу", callback_data: `status_in_progress_${requestData.id}` },
-                    { text: "📞 Позвонить", url: `tel:${requestData.phone}` }
-                ],
-                [
-                    { text: "📅 Перенести", callback_data: `status_reschedule_${requestData.id}` },
-                    { text: "✅ Завершить", callback_data: `status_completed_${requestData.id}` }
-                ],
-                [
-                    { text: "❌ Отменить", callback_data: `status_cancelled_${requestData.id}` }
-                ]
-            ]
-        };
+        // Используем JSONP прокси для обхода CORS
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
         
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-        
-        // Пробуем отправить с Markdown
-        return fetch(url, {
+        // Пробуем отправить через прокси
+        fetch(proxyUrl + telegramUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': window.location.origin
+            },
             body: JSON.stringify({
                 chat_id: TELEGRAM_CHAT_ID,
                 text: message,
-                parse_mode: 'Markdown',
-                reply_markup: keyboard
+                parse_mode: 'Markdown'
             })
         })
         .then(response => {
             console.log('📡 Ответ от Telegram API:', response.status);
-            return response.json();
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
         })
         .then(data => {
             if (data.ok) {
                 console.log('✅ Уведомление в Telegram успешно отправлено!');
                 console.log('Message ID:', data.result.message_id);
                 saveMessageId(requestData.id, data.result.message_id);
+                
+                // Отправляем второе сообщение с кнопками
+                sendTelegramButtons(requestData);
                 return true;
             } else {
                 console.error('❌ Ошибка отправки в Telegram:', data);
-                
-                // Пробуем отправить без Markdown, если он вызывает ошибку
-                if (data.description && (data.description.includes('Markdown') || data.description.includes('parse'))) {
-                    console.log('🔄 Пробуем отправить без Markdown форматирования...');
-                    return sendTelegramPlainText(requestData);
-                }
-                
-                // Показываем ошибку пользователю
-                showTelegramStatus(`Ошибка Telegram: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                // Пробуем альтернативный метод
+                sendTelegramAlternative(requestData);
                 return false;
             }
         })
         .catch(error => {
             console.error('❌ Ошибка сети при отправке в Telegram:', error);
-            showTelegramStatus(`Ошибка сети: ${error.message}`, 'error');
+            // Пробуем альтернативный метод
+            sendTelegramAlternative(requestData);
             return false;
+        });
+        
+        return true;
+    }
+
+    // Альтернативный метод отправки через JSONP
+    function sendTelegramAlternative(requestData) {
+        console.log('🔄 Пробуем альтернативный метод отправки...');
+        
+        // Создаем простой текст для отправки
+        const message = `Новая заявка: ${requestData.name}, тел: ${requestData.phone}, устройство: ${requestData.device}, проблема: ${requestData.problem.substring(0, 100)}...`;
+        
+        // Используем простой GET запрос (менее безопасно, но работает)
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}`;
+        
+        // Используем image для обхода CORS (техника JSONP альтернатива)
+        const img = new Image();
+        img.src = url;
+        img.onload = function() {
+            console.log('✅ Альтернативный метод: сообщение отправлено');
+        };
+        img.onerror = function() {
+            console.error('❌ Альтернативный метод: ошибка отправки');
+        };
+        
+        // Также пробуем через fetch с no-cors
+        fetch(url, { mode: 'no-cors' })
+        .then(() => {
+            console.log('✅ Запрос отправлен (no-cors режим)');
+        })
+        .catch(error => {
+            console.error('❌ Ошибка при отправке (no-cors):', error);
         });
     }
 
-    // Альтернативная функция для отправки простого текста (без Markdown)
-    function sendTelegramPlainText(requestData) {
-        const message = `📱 НОВАЯ ЗАЯВКА MSK REPAIR PC
-
-🆔 Номер: ${requestData.id}
-👤 Имя: ${requestData.name}
-📞 Телефон: ${requestData.phone}
-📍 Адрес: ${requestData.address}
-💻 Устройство: ${requestData.device}
-📅 Дата записи: ${requestData.appointmentDate}
-📝 Проблема: ${requestData.problem.substring(0, 300)}${requestData.problem.length > 300 ? '...' : ''}
-📅 Дата создания: ${new Date().toLocaleDateString('ru-RU')}
-🔘 Статус: Новая`;
-
+    // Отправка кнопок управления
+    function sendTelegramButtons(requestData) {
         const keyboard = {
             inline_keyboard: [
                 [
@@ -2790,33 +2792,22 @@
             ]
         };
         
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
         
-        return fetch(url, {
+        fetch(proxyUrl + telegramUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': window.location.origin
+            },
             body: JSON.stringify({
                 chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-                parse_mode: 'HTML',
+                text: "Управление заявкой:",
                 reply_markup: keyboard
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                console.log('✅ Уведомление в Telegram отправлено (plain text)');
-                saveMessageId(requestData.id, data.result.message_id);
-                return true;
-            } else {
-                console.error('❌ Ошибка отправки в Telegram (plain text):', data);
-                return false;
-            }
-        })
-        .catch(error => {
-            console.error('❌ Ошибка сети:', error);
-            return false;
-        });
+        .catch(error => console.error('Ошибка отправки кнопок:', error));
     }
 
     // Функция для тестирования Telegram бота
@@ -2833,11 +2824,15 @@
 🕒 Время: ${new Date().toLocaleTimeString('ru-RU')}
 📱 Система работает исправно!`;
 
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
         
-        fetch(url, {
+        fetch(proxyUrl + telegramUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Origin': window.location.origin
+            },
             body: JSON.stringify({
                 chat_id: TELEGRAM_CHAT_ID,
                 text: testMessage,
@@ -2855,7 +2850,7 @@
             }
         })
         .catch(error => {
-            showTelegramStatus(`❌ Ошибка сети: ${error.message}`, 'error');
+            showTelegramStatus(`❌ Ошибка сети: ${error.message}. Возможно, нужен VPN или прокси.`, 'error');
             console.error('❌ Тест Telegram: ошибка сети', error);
         });
     }
@@ -2869,9 +2864,10 @@
         
         showTelegramStatus('🔄 Проверка статуса бота...', 'warning');
         
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getMe`;
         
-        fetch(url)
+        fetch(proxyUrl + url)
         .then(response => response.json())
         .then(data => {
             if (data.ok) {
@@ -2883,7 +2879,7 @@
             }
         })
         .catch(error => {
-            showTelegramStatus(`❌ Ошибка сети: ${error.message}`, 'error');
+            showTelegramStatus(`❌ Ошибка сети: ${error.message}. Возможно, нужен VPN или прокси.`, 'error');
             console.error('❌ Статус бота: ошибка сети', error);
         });
     }
@@ -2896,58 +2892,6 @@
             localStorage.setItem('mskrepair_message_ids', JSON.stringify(messageIds));
         } catch (error) {
             console.error('Ошибка сохранения ID сообщения:', error);
-        }
-    }
-
-    // Обновление сообщения в Telegram при изменении статуса
-    function updateTelegramMessage(requestData, newStatus) {
-        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-        
-        try {
-            const messageIds = JSON.parse(localStorage.getItem('mskrepair_message_ids') || '{}');
-            const messageId = messageIds[requestData.id];
-            
-            if (!messageId) {
-                console.log('ID сообщения не найден для заявки:', requestData.id);
-                return;
-            }
-            
-            const statusText = newStatus === 'in_progress' ? '🔄 В работе' : 
-                             newStatus === 'completed' ? '✅ Завершена' : 
-                             newStatus === 'reschedule' ? '📅 Перенесена' :
-                             '❌ Отменена';
-            
-            const message = `📱 *ОБНОВЛЕНИЕ СТАТУСА ЗАЯВКИ*
-
-🆔 *Номер:* ${requestData.id}
-👤 *Имя:* ${requestData.name}
-📞 *Телефон:* \`${requestData.phone}\`
-💻 *Устройство:* ${requestData.device}
-📅 *Дата обновления:* ${new Date().toLocaleDateString('ru-RU')}
-🔘 *Статус:* ${statusText}`;
-            
-            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/editMessageText`;
-            
-            fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    message_id: messageId,
-                    text: message,
-                    parse_mode: 'Markdown'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (!data.ok) {
-                    console.error('Ошибка обновления сообщения в Telegram:', data);
-                }
-            })
-            .catch(error => console.error('Ошибка обновления сообщения в Telegram:', error));
-            
-        } catch (error) {
-            console.error('Ошибка при обновлении сообщения Telegram:', error);
         }
     }
 
@@ -3242,12 +3186,6 @@
             updateAdminPanel();
             updateArchivePanel();
             
-            // Обновляем сообщение в Telegram
-            updateTelegramMessage(requests[index], newStatus);
-            
-            // Отправляем уведомление в Telegram об изменении статуса
-            sendStatusTelegramNotification(requests[index], newStatus);
-            
             alert(`Статус заявки изменен на: ${
                 newStatus === 'completed' ? 'Завершена' : 
                 newStatus === 'cancelled' ? 'Отменена' : 
@@ -3256,37 +3194,6 @@
             }`);
         }
     };
-
-    // Отправка уведомления об изменении статуса в Telegram
-    function sendStatusTelegramNotification(requestData, status) {
-        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
-        
-        const statusText = status === 'completed' ? '✅ ЗАВЕРШЕНА' : 
-                         status === 'cancelled' ? '❌ ОТМЕНЕНА' : 
-                         status === 'reschedule' ? '📅 ПЕРЕНЕСЕНА' :
-                         '🔄 В РАБОТЕ';
-        
-        const message = `${statusText} - ЗАЯВКА MSK REPAIR PC
-
-🆔 Номер: ${requestData.id}
-👤 Имя: ${requestData.name}
-📞 Телефон: ${requestData.phone}
-💻 Устройство: ${requestData.device}
-📅 Дата изменения: ${requestData.date}`;
-        
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-        
-        fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: TELEGRAM_CHAT_ID,
-                text: message,
-                parse_mode: 'HTML'
-            })
-        })
-        .catch(error => console.error('Ошибка отправки статуса в Telegram:', error));
-    }
 
     // Экспорт в JSON
     function exportToJson() {
