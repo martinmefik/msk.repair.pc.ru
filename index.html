@@ -211,50 +211,152 @@
             text-align: center;
         }
 
+        /* ПЕРЕРАБОТАННАЯ График работы - более объемная и светлая */
         .work-hours {
-            background-color: rgba(20, 20, 20, 0.9);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.95), rgba(30, 30, 30, 0.95));
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .work-hours:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
         }
 
         .work-hours h3 {
             color: var(--secondary);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .work-hours h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
         }
 
         .work-hours p {
             color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .work-hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .work-hours-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .work-hours-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 71, 87, 0.3);
+        }
+
+        .work-hours-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .work-hours-item h4 {
+            color: var(--light);
             margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .work-hours-item p {
+            color: var(--gray);
             font-size: 1.1rem;
+            margin: 0;
         }
 
         .warning-text {
-            color: #ff4757 !important;
+            color: #ff6b81 !important;
             font-weight: 600;
-            margin-top: 15px;
-            padding: 10px;
-            background: rgba(255, 71, 87, 0.1);
-            border-radius: 6px;
-            border-left: 4px solid #ff4757;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 107, 129, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b81;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.1);
         }
 
         .guarantee-note {
-            background-color: rgba(255, 71, 87, 0.1);
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.15), rgba(255, 71, 87, 0.1));
             border-left: 4px solid var(--secondary);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 6px;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            text-align: left;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.15);
         }
 
         .guarantee-note p {
             color: var(--light);
-            margin: 8px 0;
-            font-size: 1rem;
+            margin: 12px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .guarantee-note p:before {
+            content: '•';
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        .guarantee-note strong {
+            color: var(--secondary);
+            font-size: 1.2rem;
         }
 
         /* Основные разделы */
@@ -381,7 +483,32 @@
             font-weight: bold;
         }
 
-        /* Мастер Андрей */
+        /* ПЕРЕРАБОТАННЫЙ Раздел о мастере - более объемный и красивый */
+        .master-section {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(15, 15, 15, 0.95));
+            border-radius: 20px;
+            padding: 60px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .master-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
         .master {
             display: flex;
             align-items: center;
@@ -397,45 +524,114 @@
         .master-info h2 {
             color: var(--secondary);
             margin-bottom: 30px;
-            font-size: 2.3rem;
+            font-size: 2.5rem;
             line-height: 1.3;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .master-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
         }
 
         .master-info p {
-            margin-bottom: 20px;
-            font-size: 1.15rem;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
             color: var(--light);
             line-height: 1.8;
+            text-align: justify;
+        }
+
+        .master-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .highlight {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .highlight p {
+            color: var(--gray);
+            margin: 0;
+            font-size: 1rem;
         }
 
         .master-skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 12px;
+            margin-top: 30px;
         }
 
         .skill-tag {
-            background: rgba(255, 71, 87, 0.2);
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.2), rgba(255, 71, 87, 0.1));
             color: var(--secondary);
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 600;
             border: 1px solid rgba(255, 71, 87, 0.3);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.3), rgba(255, 71, 87, 0.2));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.2);
         }
 
         .experience {
             background: linear-gradient(135deg, var(--accent), #ff6b81);
             color: white;
             display: inline-block;
-            padding: 15px 35px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 30px;
-            font-size: 1.2rem;
-            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-weight: 700;
+            margin-top: 40px;
+            font-size: 1.3rem;
+            box-shadow: 
+                0 10px 30px rgba(255, 71, 87, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
             border: none;
+            text-align: center;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .experience:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 40px rgba(255, 71, 87, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         /* Отзывы */
@@ -739,6 +935,36 @@
             margin-right: 10px;
         }
 
+        /* Кнопка выхода из аккаунта - тематическая и объемная */
+        .btn-logout {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.9), rgba(255, 107, 129, 0.9));
+            color: white;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 
+                0 5px 20px rgba(255, 71, 87, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-logout:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 129, 0.9), rgba(255, 71, 87, 0.9));
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(255, 71, 87, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
         /* Админ панель на полный экран */
         .admin-panel {
             position: fixed;
@@ -795,9 +1021,57 @@
             background: rgba(255, 71, 87, 0.2);
         }
 
+        /* Табы в админ панели */
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .admin-tab.active {
+            color: var(--secondary);
+        }
+
+        .admin-tab.active:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .admin-tab:hover:not(.active) {
+            color: var(--light);
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
         .admin-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
             margin-bottom: 30px;
         }
@@ -810,6 +1084,10 @@
 
         .admin-table-container {
             overflow-x: auto;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .admin-table {
@@ -839,19 +1117,6 @@
 
         .admin-table tr:hover {
             background-color: rgba(255, 71, 87, 0.15);
-        }
-
-        .map-container {
-            height: 500px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: var(--shadow);
-        }
-
-        #yandexMap {
-            width: 100%;
-            height: 100%;
         }
 
         /* Модальные окна */
@@ -1130,6 +1395,12 @@
             .master, .reasons {
                 flex-direction: column;
             }
+            .master-section {
+                padding: 40px;
+            }
+            .work-hours {
+                padding: 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1178,8 +1449,21 @@
             .admin-content {
                 grid-template-columns: 1fr;
             }
-            .map-container {
-                height: 300px;
+            .admin-tabs {
+                flex-direction: column;
+            }
+            .admin-tab {
+                text-align: center;
+            }
+            .master-section {
+                padding: 30px 20px;
+            }
+            .work-hours-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .master-highlights {
+                grid-template-columns: 1fr;
             }
             body {
                 padding-top: 120px;
@@ -1204,6 +1488,10 @@
             }
             .reason {
                 padding: 25px 20px;
+            }
+            .btn-logout {
+                padding: 12px 20px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -1243,15 +1531,48 @@
                 <h1>Профессиональный ремонт компьютеров и ноутбуков в Москве</h1>
                 <p>Выезд на дом и удаленная помощь. Быстро, качественно, с гарантией!</p>
                 <button id="createRequestBtn" class="btn-main">Создать заявку</button>
+                
+                <!-- ПЕРЕРАБОТАННАЯ График работы (смещена ниже) -->
                 <div class="work-hours">
-                    <h3>График работы:</h3>
-                    <p>Пн-Пт: 12:00 - 23:00 | Сб-Вс: 13:00 - 22:00</p>
-                    <p class="warning-text">Выезд мастера осуществляться на территории города Москва</p>
-                    <p class="warning-text">Для создания обращения из Московской области, звоните по телефону ниже</p>
+                    <h3><i class="fas fa-clock"></i> График работы</h3>
+                    
+                    <div class="work-hours-grid">
+                        <div class="work-hours-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Понедельник - Пятница</h4>
+                            <p>12:00 - 23:00</p>
+                        </div>
+                        <div class="work-hours-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Суббота - Воскресенье</h4>
+                            <p>13:00 - 22:00</p>
+                        </div>
+                        <div class="work-hours-item">
+                            <i class="fas fa-car"></i>
+                            <h4>Время выезда</h4>
+                            <p>30-40 минут</p>
+                        </div>
+                        <div class="work-hours-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Зона обслуживания</h4>
+                            <p>Только г. Москва</p>
+                        </div>
+                    </div>
+                    
+                    <p class="warning-text">
+                        <i class="fas fa-exclamation-triangle"></i> Выезд мастера осуществляться на территории города Москва
+                    </p>
+                    
+                    <p class="warning-text">
+                        <i class="fas fa-exclamation-circle"></i> Для создания обращения из Московской области, звоните по телефону указанному в самом низу сайта
+                    </p>
+                    
                     <div class="guarantee-note">
                         <p><strong>Гарантия на работу:</strong></p>
-                        <p>• На небольшую работу - до 14 дней</p>
-                        <p>• На более серьезную работу - 30 дней</p>
+                        <p>На небольшую работу - до 14 дней</p>
+                        <p>На более серьезную работу - 30 дней</p>
+                        <p>Бесплатная консультация после ремонта</p>
+                        <p>Оригинальные комплектующие</p>
                     </div>
                 </div>
             </div>
@@ -1342,29 +1663,50 @@
             </div>
         </section>
 
-        <!-- Раздел о мастере -->
+        <!-- ПЕРЕРАБОТАННЫЙ Раздел о мастере -->
         <section id="master" class="fade-in">
-            <div class="master">
-                <div class="master-info">
-                    <h2>Андрей - ваш надежный компьютерный мастер в Москве</h2>
-                    <p>Более 2 лет профессионально занимаюсь ремонтом и обслуживанием компьютерной техники. За это время помог более чем 100 клиентам вернуть к жизни их устройства и восстановить важные данные.</p>
-                    <p>Специализируюсь на комплексном решении проблем: от диагностики неисправностей до полного восстановления работоспособности техники. Работаю как с современными моделями, так и с устаревшим оборудованием.</p>
-                    <p>Имею необходимое диагностическое оборудование и инструменты. Это позволяет выполнять даже сложные ремонты с максимальной точностью и эффективностью.</p>
-                    <p>Постоянно совершенствую свои навыки, слежу за новинками в области компьютерных технологий и современными методами ремонта. Регулярно прохожу обучение и изучаю профессиональную литературу.</p>
-                    <p>В работе ценю честность и прозрачность. Всегда подробно объясняю клиентам суть проблемы, варианты решения и стоимость работ. Предоставляю гарантию на все виды услуг.</p>
-                    
-                    <div class="master-skills">
-                        <span class="skill-tag">Диагностика</span>
-                        <span class="skill-tag">Ремонт ноутбуков</span>
-                        <span class="skill-tag">Ремонт компьютеров</span>
-                        <span class="skill-tag">Восстановление данных</span>
-                        <span class="skill-tag">Замена комплектующих</span>
-                        <span class="skill-tag">Чистка от пыли</span>
-                        <span class="skill-tag">Установка ОС</span>
-                        <span class="skill-tag">Удаленная помощь</span>
+            <div class="master-section">
+                <div class="master">
+                    <div class="master-info">
+                        <h2>Андрей - ваш надежный компьютерный мастер в Москве</h2>
+                        <p>Более 2 лет профессионально занимаюсь ремонтом и обслуживанием компьютерной техники. За это время помог более чем 100 клиентам вернуть к жизни их устройства и восстановить важные данные.</p>
+                        
+                        <div class="master-highlights">
+                            <div class="highlight">
+                                <h4>Специализация</h4>
+                                <p>Комплексный ремонт компьютеров и ноутбуков любой сложности</p>
+                            </div>
+                            <div class="highlight">
+                                <h4>Опыт работы</h4>
+                                <p>2+ года практического опыта, постоянное обучение и повышение квалификации</p>
+                            </div>
+                            <div class="highlight">
+                                <h4>Подход к работе</h4>
+                                <p>Честность, прозрачность, индивидуальный подход к каждому клиенту</p>
+                            </div>
+                            <div class="highlight">
+                                <h4>Оборудование</h4>
+                                <p>Современное диагностическое оборудование и профессиональные инструменты</p>
+                            </div>
+                        </div>
+                        
+                        <div class="master-skills">
+                            <span class="skill-tag">Диагностика</span>
+                            <span class="skill-tag">Ремонт ноутбуков</span>
+                            <span class="skill-tag">Ремонт компьютеров</span>
+                            <span class="skill-tag">Восстановление данных</span>
+                            <span class="skill-tag">Замена комплектующих</span>
+                            <span class="skill-tag">Чистка от пыли</span>
+                            <span class="skill-tag">Установка ОС</span>
+                            <span class="skill-tag">Удаленная помощь</span>
+                            <span class="skill-tag">Апгрейд</span>
+                            <span class="skill-tag">Модернизация</span>
+                        </div>
+                        
+                        <div class="experience">
+                            <i class="fas fa-award"></i> 2 года успешной работы • 100+ довольных клиентов
+                        </div>
                     </div>
-                    
-                    <div class="experience">2 года успешной работы • 100+ довольных клиентов</div>
                 </div>
             </div>
         </section>
@@ -1419,7 +1761,7 @@
 
                 <!-- Форма для авторизованных пользователей -->
                 <div id="requestFormContainer" style="display: none;">
-                    <div class="work-hours">
+                    <div class="work-hours" style="margin-top: 0;">
                         <h3>Интервал записи: 2 часа</h3>
                         <p>Выберите удобное время в рабочее время мастерской</p>
                         <p class="warning-text">Максимально можно записаться на месяц вперед</p>
@@ -1592,17 +1934,29 @@
             <button class="close-admin" id="closeAdmin">&times;</button>
         </div>
         
-        <div class="admin-content">
-            <div>
-                <div class="work-hours">
-                    <h3>Управление заявками</h3>
-                    <div>
-                        <label for="adminDateFilter" style="color: var(--light);">Фильтр по дате:</label>
-                        <input type="text" id="adminDateFilter" class="flatpickr-input" placeholder="Выберите дату">
-                    </div>
-                </div>
-                
+        <!-- Табы в админ панели -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="active">Активные заявки</button>
+            <button class="admin-tab" data-tab="archive">Архив</button>
+        </div>
+        
+        <!-- Контент активных заявок -->
+        <div id="activeTab" class="admin-tab-content active">
+            <div class="admin-content">
                 <div class="admin-table-container">
+                    <div class="work-hours" style="margin: 0 0 20px 0; padding: 20px;">
+                        <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Управление активными заявками</h3>
+                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="adminDateFilter" style="color: var(--light); display: block; margin-bottom: 8px;">Фильтр по дате:</label>
+                                <input type="text" id="adminDateFilter" class="flatpickr-input" placeholder="Выберите дату">
+                            </div>
+                            <div>
+                                <button id="refreshAdminBtn" class="btn-main" style="margin-top: 25px;">Обновить список</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <table class="admin-table">
                         <thead>
                             <tr>
@@ -1617,20 +1971,39 @@
                             </tr>
                         </thead>
                         <tbody id="adminRequestsTable">
-                            <!-- Заявки будут загружаться здесь -->
+                            <!-- Активные заявки будут загружаться здесь -->
                         </tbody>
                     </table>
                 </div>
             </div>
-            
-            <div>
-                <div class="work-hours">
-                    <h3>Карта с адресом клиента</h3>
-                    <p>Выберите заявку для отображения адреса на карте</p>
-                </div>
-                
-                <div class="map-container">
-                    <div id="yandexMap"></div>
+        </div>
+        
+        <!-- Контент архива -->
+        <div id="archiveTab" class="admin-tab-content">
+            <div class="admin-content">
+                <div class="admin-table-container">
+                    <div class="work-hours" style="margin: 0 0 20px 0; padding: 20px;">
+                        <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Архив заявок</h3>
+                        <p style="color: var(--gray);">Здесь хранятся отмененные и завершенные заявки</p>
+                    </div>
+                    
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Имя</th>
+                                <th>Телефон</th>
+                                <th>Email</th>
+                                <th>Дата записи</th>
+                                <th>Адрес</th>
+                                <th>Статус</th>
+                                <th>Дата создания</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminArchiveTable">
+                            <!-- Архивные заявки будут загружаться здесь -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -1657,7 +2030,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=4bf02e5d-e524-41e4-bbb6-1cf3f40076e7&lang=ru_RU" type="text/javascript"></script>
     <script>
         // Имитация базы данных в localStorage с синхронизацией для Chrome и Яндекс
         const DB = {
@@ -1861,6 +2233,22 @@
                 return requests.filter(req => req.username === username);
             },
             
+            // Получение активных заявок (новые и в работе)
+            getActiveRequests: function() {
+                const requests = this.getRequests();
+                return requests.filter(req => 
+                    req.status === 'new' || req.status === 'in_progress'
+                );
+            },
+            
+            // Получение архивных заявок (отмененные и завершенные)
+            getArchiveRequests: function() {
+                const requests = this.getRequests();
+                return requests.filter(req => 
+                    req.status === 'cancelled' || req.status === 'completed'
+                );
+            },
+            
             // Проверка, может ли пользователь создать новую заявку
             canCreateRequest: function(username) {
                 const requests = this.getRequests();
@@ -1896,9 +2284,6 @@
         let selectedDate = null;
         let selectedTime = null;
         let flatpickrInstance = null;
-        let ymaps = null;
-        let yandexMap = null;
-        let selectedRequestForMap = null;
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
@@ -1931,9 +2316,6 @@
             
             // Обновление интерфейса в зависимости от авторизации
             updateRequestFormVisibility();
-            
-            // Инициализация Яндекс Карт
-            initYandexMaps();
         });
 
         // Инициализация календаря
@@ -1976,24 +2358,6 @@
             
             // Генерация временных слотов
             updateTimeSlots();
-        }
-
-        // Инициализация Яндекс Карт
-        function initYandexMaps() {
-            if (typeof ymaps !== 'undefined') {
-                ymaps.ready(function() {
-                    // Создаем карту
-                    yandexMap = new ymaps.Map('yandexMap', {
-                        center: [55.751574, 37.573856], // Москва
-                        zoom: 10,
-                        controls: ['zoomControl', 'fullscreenControl']
-                    });
-                    
-                    console.log('Яндекс Карты инициализированы');
-                });
-            } else {
-                console.log('Яндекс Карты не загружены. Проверьте API ключ.');
-            }
         }
 
         // Обновление видимости формы заявки
@@ -2182,6 +2546,37 @@
                 });
             });
             
+            // Переключение вкладок в админ панели
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Убираем активный класс со всех вкладок
+                    document.querySelectorAll('.admin-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    document.querySelectorAll('.admin-tab-content').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    
+                    // Добавляем активный класс выбранной вкладке
+                    this.classList.add('active');
+                    document.getElementById(tabId + 'Tab').classList.add('active');
+                    
+                    // Загружаем данные для выбранной вкладки
+                    if (tabId === 'active') {
+                        loadAdminRequests();
+                    } else if (tabId === 'archive') {
+                        loadAdminArchive();
+                    }
+                });
+            });
+            
+            // Кнопка обновления в админ панели
+            document.getElementById('refreshAdminBtn').addEventListener('click', function() {
+                loadAdminRequests();
+            });
+            
             // Форма регистрации
             document.getElementById('registerForm').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -2356,6 +2751,11 @@
                 // Обновление списка заявок пользователя
                 if (document.getElementById('my-requests').style.display !== 'none') {
                     loadUserRequests();
+                }
+                
+                // Обновление админ панели, если она открыта
+                if (document.getElementById('adminPanel').classList.contains('active')) {
+                    loadAdminRequests();
                 }
             });
             
@@ -2652,14 +3052,15 @@
                     // Обновление админ панели, если она открыта
                     if (document.getElementById('adminPanel').classList.contains('active')) {
                         loadAdminRequests();
+                        loadAdminArchive();
                     }
                 }
             }
         };
 
-        // Загрузка заявок для админ панели
+        // Загрузка активных заявок для админ панели
         function loadAdminRequests(filterDate = null) {
-            let requests = DB.getRequests();
+            let requests = DB.getActiveRequests();
             const tableBody = document.getElementById('adminRequestsTable');
             
             // Фильтрация по дате, если указана
@@ -2671,90 +3072,84 @@
             requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             
             let html = '';
-            requests.forEach(request => {
-                const statusText = {
-                    'new': 'Новая',
-                    'in_progress': 'В работе',
-                    'completed': 'Завершена',
-                    'cancelled': 'Отменена'
-                }[request.status] || request.status;
-                
-                const date = new Date(request.createdAt).toLocaleString('ru-RU');
-                
-                html += `
-                <tr>
-                    <td>${request.id.substring(0, 8)}</td>
-                    <td>${request.fullName}</td>
-                    <td>${request.phone}</td>
-                    <td>${request.userEmail || 'Не указан'}</td>
-                    <td>${request.appointmentDate || 'Не указана'} ${request.appointmentTime || ''}</td>
-                    <td>${request.address}</td>
-                    <td>${statusText}</td>
-                    <td>
-                        <button onclick="adminShowOnMap('${request.id}', '${request.address}')" style="padding:5px 10px; background:#3498db; color:white; border:none; border-radius:4px; cursor:pointer; margin-bottom:5px;">На карте</button>
-                        ${request.status === 'new' || request.status === 'in_progress' ? 
-                          `<button onclick="adminCancelRequest('${request.id}', '${request.appointmentDate}', '${request.appointmentTime}', '${request.username}')" style="padding:5px 10px; background:#ff4757; color:white; border:none; border-radius:4px; cursor:pointer;">Отменить запись</button>` : 
-                          ''}
-                        ${request.status === 'new' ? 
-                          `<button onclick="adminStartRequest('${request.id}')" style="padding:5px 10px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">В работу</button>` : 
-                          ''}
-                        ${request.status === 'in_progress' ? 
-                          `<button onclick="adminCompleteRequest('${request.id}')" style="padding:5px 10px; background:#2ed573; color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">Завершить</button>` : 
-                          ''}
-                    </td>
-                </tr>
-                `;
-            });
+            if (requests.length === 0) {
+                html = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Нет активных заявок</td></tr>`;
+            } else {
+                requests.forEach(request => {
+                    const statusText = {
+                        'new': 'Новая',
+                        'in_progress': 'В работе'
+                    }[request.status] || request.status;
+                    
+                    const date = new Date(request.createdAt).toLocaleString('ru-RU');
+                    
+                    html += `
+                    <tr>
+                        <td>${request.id.substring(0, 8)}</td>
+                        <td>${request.fullName}</td>
+                        <td>${request.phone}</td>
+                        <td>${request.userEmail || 'Не указан'}</td>
+                        <td>${request.appointmentDate || 'Не указана'} ${request.appointmentTime || ''}</td>
+                        <td>${request.address}</td>
+                        <td>${statusText}</td>
+                        <td>
+                            ${request.status === 'new' || request.status === 'in_progress' ? 
+                              `<button onclick="adminCancelRequest('${request.id}', '${request.appointmentDate}', '${request.appointmentTime}', '${request.username}')" style="padding:5px 10px; background:#ff4757; color:white; border:none; border-radius:4px; cursor:pointer;">Отменить запись</button>` : 
+                              ''}
+                            ${request.status === 'new' ? 
+                              `<button onclick="adminStartRequest('${request.id}')" style="padding:5px 10px; background:var(--secondary); color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">В работу</button>` : 
+                              ''}
+                            ${request.status === 'in_progress' ? 
+                              `<button onclick="adminCompleteRequest('${request.id}')" style="padding:5px 10px; background:#2ed573; color:white; border:none; border-radius:4px; cursor:pointer; margin-left:5px;">Завершить</button>` : 
+                              ''}
+                        </td>
+                    </tr>
+                    `;
+                });
+            }
             
             tableBody.innerHTML = html;
         }
 
-        // Показать адрес на карте
-        window.adminShowOnMap = function(requestId, address) {
-            if (!address || address === 'Удаленно') {
-                alert('Для этой заявки адрес не указан (удаленная работа)');
-                return;
-            }
+        // Загрузка архивных заявок для админ панели
+        function loadAdminArchive() {
+            const requests = DB.getArchiveRequests();
+            const tableBody = document.getElementById('adminArchiveTable');
             
-            selectedRequestForMap = requestId;
+            // Сортируем заявки по дате (новые сверху)
+            requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
             
-            if (typeof ymaps !== 'undefined' && yandexMap) {
-                // Используем геокодирование Яндекс Карт
-                ymaps.geocode(address, {
-                    results: 1
-                }).then(function (res) {
-                    const firstGeoObject = res.geoObjects.get(0);
-                    
-                    if (firstGeoObject) {
-                        const coordinates = firstGeoObject.geometry.getCoordinates();
-                        yandexMap.setCenter(coordinates, 15);
-                        
-                        // Очищаем предыдущие метки
-                        yandexMap.geoObjects.removeAll();
-                        
-                        // Добавляем новую метку
-                        const placemark = new ymaps.Placemark(coordinates, {
-                            hintContent: address,
-                            balloonContent: `Заявка ID: ${requestId.substring(0, 8)}<br>Адрес: ${address}`
-                        }, {
-                            preset: 'islands#redIcon'
-                        });
-                        
-                        yandexMap.geoObjects.add(placemark);
-                        
-                        // Открываем балун с информацией
-                        placemark.balloon.open();
-                    } else {
-                        alert('Не удалось найти указанный адрес на карте');
-                    }
-                }).catch(function(error) {
-                    console.error('Ошибка геокодирования:', error);
-                    alert('Ошибка при поиске адреса на карте');
-                });
+            let html = '';
+            if (requests.length === 0) {
+                html = `<tr><td colspan="8" style="text-align:center; padding: 30px; color: var(--gray);">Архив пуст</td></tr>`;
             } else {
-                alert('Карты не загружены. Проверьте подключение к интернету и API ключ Яндекс Карт.');
+                requests.forEach(request => {
+                    const statusText = {
+                        'completed': 'Завершена',
+                        'cancelled': 'Отменена'
+                    }[request.status] || request.status;
+                    
+                    const date = new Date(request.createdAt).toLocaleString('ru-RU');
+                    const appointmentDateTime = request.appointmentDate ? 
+                        `${request.appointmentDate} ${request.appointmentTime || ''}` : 'Не указана';
+                    
+                    html += `
+                    <tr>
+                        <td>${request.id.substring(0, 8)}</td>
+                        <td>${request.fullName}</td>
+                        <td>${request.phone}</td>
+                        <td>${request.userEmail || 'Не указан'}</td>
+                        <td>${appointmentDateTime}</td>
+                        <td>${request.address}</td>
+                        <td>${statusText}</td>
+                        <td>${date}</td>
+                    </tr>
+                    `;
+                });
             }
-        };
+            
+            tableBody.innerHTML = html;
+        }
 
         // Действия админа с заявками (с синхронизацией с клиентом)
         window.adminCancelRequest = function(requestId, appointmentDate, appointmentTime, username) {
@@ -2767,6 +3162,7 @@
                 }
                 
                 loadAdminRequests();
+                loadAdminArchive();
                 updateTimeSlots();
                 
                 // Синхронизация: если пользователь сейчас в разделе "Мои заявки", обновляем его список
@@ -2779,11 +3175,13 @@
         window.adminStartRequest = function(requestId) {
             DB.updateRequest(requestId, { status: 'in_progress' });
             loadAdminRequests();
+            loadAdminArchive();
         };
 
         window.adminCompleteRequest = function(requestId) {
             DB.updateRequest(requestId, { status: 'completed' });
             loadAdminRequests();
+            loadAdminArchive();
         };
     </script>
 </body>
